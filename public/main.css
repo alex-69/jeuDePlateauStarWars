@@ -37,3 +37,58 @@ header {
     float: left;
     background-color: black;
   }
+  .arme1Class {
+    box-sizing: border-box;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+    border: 1px black solid;
+    float: left;
+    background-image: url('images/arme1.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  .arme2Class {
+    box-sizing: border-box;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+    border: 1px black solid;
+    float: left;
+    background-image: url('images/arme2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  .arme3Class {
+    box-sizing: border-box;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+    border: 1px black solid;
+    float: left;
+    background-image: url('/images/arme3.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  .arme4Class {
+    box-sizing: border-box;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+    border: 1px black solid;
+    float: left;
+    background-image: url('/images/arme4.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
