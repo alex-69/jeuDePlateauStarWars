@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --watch",
-    "start": "webpack-dashboard webpack-dev-server -d --hot --config webpack.config.js --watch"
+    "start": "webpack-dev-server -d --hot --config webpack.config.js --watch"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +15,14 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "imports-loader": "^0.8.0",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dashboard": "^3.0.0",
     "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
   }
 }
