@@ -92,3 +92,19 @@ header {
     background-repeat: no-repeat;
     background-size: contain;
   }
+
+  #perso1 {
+    position: absolute;
+    z-index: 2;
+    width: 100px;
+    height: 100px;
+    border: 1px black solid;
+  }
+  
+  #perso2 {
+    position: absolute;
+    z-index: 2;
+    width: 100px;
+    height: 100px;
+    border: 1px black solid;
+  }
