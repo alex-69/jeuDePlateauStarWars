@@ -1,6 +1,7 @@
 
 export {Arme};
 
+
 function Arme() {
 
   // Initialise les armes

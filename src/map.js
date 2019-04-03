@@ -1,13 +1,12 @@
 
-export{nb_aleat,tab_position, $carte, carte};
+export{carte};
 import{Arme} from './weapon';
 import{Perso} from './character';
-function nb_aleat(max) {
-    return Math.floor((Math.random() * max) + 1);
-  }
-let tab_position = [];
+import{nb_aleat} from './main'
+
 const $carte = $("#map");
- 
+//this.cible = '';
+let tab_position = [];
 
 function carte(nombre_case_X, nombre_case_Y) {
     this.nbre_case_X = nombre_case_X;
@@ -18,36 +17,37 @@ function carte(nombre_case_X, nombre_case_Y) {
     this.perso2_sur_carte = false;
     this.perso1 = '';
     this.perso2 = '';
-
     this.getPerso1 = function() {
         return this.perso1;
       }
     this.getPerso2 = function() {
         return this.perso2;
       }
-   
+
     
+
     //création de la map
     this.genere_carte_aleatoire = function() {
-        for (let i = 0; i < `${this.nbre_case_X}`; i++){
-            for (let j = 0; j< `${this.nbre_case_Y}`; j++){
+        for (let i = 0; i < this.nbre_case_X; i++){
+            for (let j = 0; j< this.nbre_case_Y; j++){
 
                 const random = nb_aleat(20); // nbre aléatoire entre 1 et 20
 
                 if (random == 1 && this.perso1_sur_carte == false) { // si random est égal à 1 et que le perso1 n'est pas encore sur la map
-                $carte.append("<img src='../images/perso1_luke.png' class='persoClass' id='perso1' style='left:" + 100 * j + "px; top:" + 100 * i + "px'>"); // on ajoute la div Alien
-                $carte.append("<div class='casevideClass'></div>"); // on ajoute une div casevide sous la div Alien
+                $carte.append("<img src='../images/perso1_luke.png' class='persoClass' id='perso1' style='left:" + 100 * j + "px; top:" + 100 * i + "px'>"); // on ajoute la div Luke
+                $carte.append("<div class='casevide'></div>"); // on ajoute une div casevide sous la div Luke
                 this.perso1_sur_carte = true; //la valeur false devient true
-                tab_position.push(3); // 3 est l' id d' Alien
+                tab_position.push(3); // 3 est l' id de Luke
                 this.perso1 = new Perso(); // function Perso() perso_v2.js
-                this.perso1.initPerso("Luke", 100, 10, $("#perso1"), 0); // initialise Alien à partir du constructor Perso
+                this.perso1.initPerso("Luke", 100, 10, $("#perso1"), 0); // initialise Luke à partir du constructor Perso
+                
                 } else if (random == 12 && this.perso2_sur_carte == false) { // si random est égal à 12 et que le perso2 n'est pas encore sur la map
-                $carte.append("<img src='../images/perso2_vador.png' class='persoClass' id='perso2' style='left:" + 100 * j + "px; top:" + 100 * i + "px'>"); // on ajoute la div Predator
-                $carte.append("<div class='casevideClass'></div>"); // on ajoute une div casevide sous la div Predator
+                $carte.append("<img src='../images/perso2_vador.png' class='persoClass' id='perso2' style='left:" + 100 * j + "px; top:" + 100 * i + "px'>"); // on ajoute la div Vador
+                $carte.append("<div class='casevide'></div>"); // on ajoute une div casevide sous la div Vador
                 this.perso2_sur_carte= true;
-                tab_position.push(4); // 4 est l'id de Predator
+                tab_position.push(4); // 4 est l'id de Vador
                 this.perso2 = new Perso();
-                this.perso2.initPerso("Vador", 100, 10, $("#perso2"), 0); // initialise Predator
+                this.perso2.initPerso("Vador", 100, 10, $("#perso2"), 0); // initialise Vador
                 }
                 if (random == 3 && this.nb_arme_sur_la_carte < 1) { // si random est égal à 3 et que l' arme1 n'est pas encore sur la carte
                 $carte.append("<div id='arme1' class='arme1Class'></div>"); // on ajoute la div arme 1

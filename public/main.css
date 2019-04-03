@@ -1,8 +1,19 @@
+
+
 header {
     width: 100%;
     height: auto;
     text-align: center;
     vertical-align: middle;
+  }
+  h1 {
+    text-align: center;
+    width: auto;
+    height: auto;
+    font-size: 1.2em;
+    vertical-align: middle;
+    z-index: 5;
+    color: white;
   }
 
   #map {
@@ -107,4 +118,50 @@ header {
     width: 100px;
     height: 100px;
     border: 1px black solid;
+  }
+  .joueurClass {
+    z-index: 4;
+    width: 10%;
+    height: 50%;
+    margin: 10px;
+    /*marge extérieure*/
+    padding: 20px;
+    vertical-align: middle;
+    background-color: white;
+    border: 1px black solid;
+    position: fixed;
+  }
+
+  #joueur1 {
+    bottom: 5px;
+    left: 5px;
+  }
+  
+  #joueur2 {
+    bottom: 5px;
+    right: 5px;
+  }
+  
+  .recapSanteClass {
+    font-size: 0.8em;
+    color: black;
+    float: left;
+    z-index: 4;
+    position: relative;
+  }
+  
+  .recapArmeClass {
+    font-size: 0.8em;
+    color: black;
+    float: left;
+    z-index: 4;
+    position: relative;
+  }
+  
+  .recapEtatClass {
+    font-size: 0.8em;
+    color: black;
+    float: left;
+    z-index: 4;
+    position: relative;
   }
