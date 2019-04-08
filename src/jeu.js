@@ -1,7 +1,7 @@
 
 export{jeu};
-import{carte} from './map';
-import{nb_aleat, getIndexPerso, getIndex} from './main'
+import{carte} from './grille';
+import{nb_aleat, getIndexPerso, getIndex} from './principal'
 
 
 
@@ -9,8 +9,30 @@ let ligne;
 let colonne;
 const longueur = 10;
     
-function jeu(){
-    this.carte = new carte(10,10);
+class jeu{
+   constructor(ligne, colonne){
+     this.ligne = ligne
+     this.colonne = colonne
+     this.carte = $("#app");
+      this.tab_position = [];
+   }
+   creationGrille(){
+      let table = document.createElement('table')
+      let body = document.createElement('tbody')
+
+      for(let i=0 i < this.ligne; i++){
+
+        let tr = document.createElement('tr')
+        body.appendChild(tr)
+      for(let j = 0 j < this.colonne; j++){
+        let td = document.createElement('td')
+        td.setAttribute("data-x", j)
+        td.setAttribute("data-y", i)
+        td.id = "td-" + i+j
+
+      }
+      }
+   }
 
     // déclaration des personnages
     this.perso1;
