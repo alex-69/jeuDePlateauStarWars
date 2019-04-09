@@ -13,7 +13,7 @@ class jeu{
    constructor(ligne, colonne){
      this.ligne = ligne
      this.colonne = colonne
-     this.carte = $("#app");
+     this.app = $("#app");
       this.tab_position = [];
    }
    creationGrille(){
@@ -24,15 +24,21 @@ class jeu{
 
         let tr = document.createElement('tr')
         body.appendChild(tr)
-      for(let j = 0 j < this.colonne; j++){
+        for(let j = 0 j < this.colonne; j++){
         let td = document.createElement('td')
         td.setAttribute("data-x", j)
         td.setAttribute("data-y", i)
         td.id = "td-" + i+j
+        tr.appendChild('td')
 
-      }
+        }
       }
    }
+  }
+
+
+   this.app.appendChild(table)
+    this.createNoAccess()
 
     // déclaration des personnages
     this.perso1;
@@ -107,9 +113,54 @@ class jeu{
         });
       };
 
+class HandleGrid {
+    constructor(attributeFirst, attributeSecond, attributeThird, gridLength){
+        this.attributeFirst = attributeFirst ? attributeFirst : null
+        this.attributeSecond = attributeSecond ? attributeSecond : null
+        this.attributeThird = attributeThird ? attributeThird : null
+        this.gridLength = gridLength
+    }
 
+    browseTab(){
+        let randomInt = 0
+        let kase = null
+        let id = null
+        let i = 0
+        let j = 0
 
-  };
+        while(i < this.gridLength){
+            randomInt = Math.floor(Math.random() * this.gridLength)
+            if(randomInt < 10 ){
+                id = 'td-0'
+            }else {
+                id = 'td-'
+            }
+
+            kase = document.getElementById(id + randomInt)
+
+            while(kase.hasAttribute(this.attributeFirst) || kase.hasAttribute(this.attributeSecond) || kase.hasAttribute(this.attributeThird) &&  j < this.gridLength)
+            {
+                randomInt = Math.floor(Math.random() * this.gridLength)
+                if(randomInt < 10 ){
+                    id = 'td-0'
+                }else {
+                    id = 'td-'
+                }
+                kase = document.getElementById(id + randomInt)
+
+                j++
+            }
+
+            i++
+        }
+
+        return kase
+    }
+}
+
+export { HandleGrid }
+
+  
 
 
 
