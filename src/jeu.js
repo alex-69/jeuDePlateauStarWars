@@ -2,6 +2,7 @@
 export{jeu};
 import{carte} from './grille';
 import{nb_aleat, getIndexPerso, getIndex} from './principal'
+import{tenueDeGrille} from './tenueDeGrille' 
 
 
 
@@ -34,6 +35,16 @@ class jeu{
         }
       }
    }
+CreerCaseNonAccess(){
+  let tenueDeGrille = new tenueDeGrille(null, null, null, this.longueurGrille)
+  let kase = null
+  for(let i = 0; i < 50; i++){
+    kase = tenueDeGrille.parcourirTable()
+    kase.style.backgroundColor = 'black'
+    kase.setAttribute('donnees-caseaccess', 0)
+  }
+}
+
   }
 
 
@@ -113,52 +124,7 @@ class jeu{
         });
       };
 
-class HandleGrid {
-    constructor(attributeFirst, attributeSecond, attributeThird, gridLength){
-        this.attributeFirst = attributeFirst ? attributeFirst : null
-        this.attributeSecond = attributeSecond ? attributeSecond : null
-        this.attributeThird = attributeThird ? attributeThird : null
-        this.gridLength = gridLength
-    }
 
-    browseTab(){
-        let randomInt = 0
-        let kase = null
-        let id = null
-        let i = 0
-        let j = 0
-
-        while(i < this.gridLength){
-            randomInt = Math.floor(Math.random() * this.gridLength)
-            if(randomInt < 10 ){
-                id = 'td-0'
-            }else {
-                id = 'td-'
-            }
-
-            kase = document.getElementById(id + randomInt)
-
-            while(kase.hasAttribute(this.attributeFirst) || kase.hasAttribute(this.attributeSecond) || kase.hasAttribute(this.attributeThird) &&  j < this.gridLength)
-            {
-                randomInt = Math.floor(Math.random() * this.gridLength)
-                if(randomInt < 10 ){
-                    id = 'td-0'
-                }else {
-                    id = 'td-'
-                }
-                kase = document.getElementById(id + randomInt)
-
-                j++
-            }
-
-            i++
-        }
-
-        return kase
-    }
-}
-
-export { HandleGrid }
 
   
 
