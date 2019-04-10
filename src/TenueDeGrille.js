@@ -8,7 +8,6 @@ class TenueDeGrille{
 
     parcourirTable(){
        let aleatInt = 0
-       console.log(aleatInt)
        let kase = null
        let id = null
        let i = 0
