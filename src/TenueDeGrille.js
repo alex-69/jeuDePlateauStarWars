@@ -14,8 +14,8 @@ class TenueDeGrille{
        let i = 0
        let j = 0
 
-       while (i < this.longueurGrille ){
-           aleatInt = Math.floor(Math.random() * this.gridLength)
+       while (i < this.longueurGrille){
+           aleatInt = Math.floor(Math.random() * this.longueurGrille)
             if(aleatInt < 10){   
                id = 'td-0'
            }else {

@@ -1,11 +1,5 @@
 
 
-header {
-    width: 100%;
-    height: auto;
-    text-align: center;
-    vertical-align: middle;
-  }
   h1 {
     text-align: center;
     width: auto;
@@ -16,152 +10,18 @@ header {
     color: white;
   }
 
-  #map {
-    width: 1000px;
-    border: 2px black solid;
-    margin: auto;
-    position: relative;
-    z-index: 3;
-  }
+  body
+{
+    margin: 0;
+    padding: 0;
+}
 
-  .casevide {
-    box-sizing: border-box;
-    font-size: 0;
-    margin: 0;
-    padding: 0;
-    width: 100px;
-    height: 100px;
-    border: 1px black solid;
-    float: left;
-    background: white;
-    z-index: 1;
-  }
-
-  .casepleine {
-    box-sizing: border-box;
-    font-size: 0;
-    margin: 0;
-    padding: 0;
-    width: 100px;
-    height: 100px;
-    border: 1px white solid;
-    float: left;
-    background-color: black;
-  }
-  .arme1Class {
-    box-sizing: border-box;
-    font-size: 0;
-    margin: 0;
-    padding: 0;
-    width: 100px;
-    height: 100px;
-    border: 1px black solid;
-    float: left;
-    background-image: url('images/arme1.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-  
-  .arme2Class {
-    box-sizing: border-box;
-    font-size: 0;
-    margin: 0;
-    padding: 0;
-    width: 100px;
-    height: 100px;
-    border: 1px black solid;
-    float: left;
-    background-image: url('images/arme2.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-  
-  .arme3Class {
-    box-sizing: border-box;
-    font-size: 0;
-    margin: 0;
-    padding: 0;
-    width: 100px;
-    height: 100px;
-    border: 1px black solid;
-    float: left;
-    background-image: url('/images/arme3.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-  
-  .arme4Class {
-    box-sizing: border-box;
-    font-size: 0;
-    margin: 0;
-    padding: 0;
-    width: 100px;
-    height: 100px;
-    border: 1px black solid;
-    float: left;
-    background-image: url('/images/arme4.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-
-  #perso1 {
-    position: absolute;
-    z-index: 2;
-    width: 100px;
-    height: 100px;
-    border: 1px black solid;
-  }
-  
-  #perso2 {
-    position: absolute;
-    z-index: 2;
-    width: 100px;
-    height: 100px;
-    border: 1px black solid;
-  }
-  .joueurClass {
-    z-index: 4;
-    width: 10%;
-    height: 50%;
-    margin: 10px;
-    /*marge extérieure*/
+table td{
     padding: 20px;
-    vertical-align: middle;
-    background-color: white;
-    border: 1px black solid;
-    position: fixed;
-  }
+    border: 1px solid black;
+}
 
-  #joueur1 {
-    bottom: 5px;
-    left: 5px;
-  }
-  
-  #joueur2 {
-    bottom: 5px;
-    right: 5px;
-  }
-  
-  .recapSanteClass {
-    font-size: 0.8em;
-    color: black;
-    float: left;
-    z-index: 4;
-    position: relative;
-  }
-  
-  .recapArmeClass {
-    font-size: 0.8em;
-    color: black;
-    float: left;
-    z-index: 4;
-    position: relative;
-  }
-  
-  .recapEtatClass {
-    font-size: 0.8em;
-    color: black;
-    float: left;
-    z-index: 4;
-    position: relative;
-  }
+table{
+    margin: auto;
+    margin-top: 10%;
+}
