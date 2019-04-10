@@ -1,8 +1,5 @@
 
-export{carte};
-import{Arme} from './weapon';
-import{Perso} from './character';
-import{nb_aleat} from './main'
+
 
 const $carte = $("#map");
 //this.cible = '';

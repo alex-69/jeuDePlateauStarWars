@@ -1,17 +1,24 @@
 class TenueDeGrille{
-    constructor(attributPremier, attributSecond, attributSecond, attributTroisieme, longueurGrille)
+    constructor(attributPremier, attributSecond, attributTroisieme, longueurGrille){
+        this.attributPremier = attributPremier ? attributPremier : null
+        this.attributSecond = attributSecond ? attributSecond : null
+        this.attributTroisieme = attributTroisieme ? attributTroisieme : null
+        this.longueurGrille = longueurGrille
+    }
 
-    ParcourirTable(){
+    parcourirTable(){
        let aleatInt = 0
+       console.log(aleatInt)
        let kase = null
        let id = null
        let i = 0
        let j = 0
 
-       while (i = 0 i < this.longueurGrille ){
-           aleatInt = Math.floor(Math.random() * this.gridLength){
+       while (i < this.longueurGrille ){
+           aleatInt = Math.floor(Math.random() * this.gridLength)
+            if(aleatInt < 10){   
                id = 'td-0'
-           }else{
+           }else {
                id = 'td-'
            }
            kase = document.getElementById(id + aleatInt)

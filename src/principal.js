@@ -1,6 +1,5 @@
-export{ligne, colonne, longueur, $carte, tab_position, nb_aleat, getIndexPerso, getIndex}
-import{Perso} from './character'
-//variables globales 
+
+
 let ligne;
 let colonne;
 const longueur = 10;

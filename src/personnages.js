@@ -1,6 +1,6 @@
 
 
-export{Perso};
+
 
 // returne l'index du perso passé en argument, function utilisé dans toucheEnfonce()
 const $carte = $("#map");
