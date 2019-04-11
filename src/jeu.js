@@ -3,10 +3,7 @@
 
 import{TenueDeGrille} from './tenueDeGrille' 
 import{Arme} from './armes'
-<<<<<<< HEAD
 import{Joueur} from './joueurs'
-=======
->>>>>>> Cases/armes
 
 
 class Jeu {
@@ -39,11 +36,8 @@ class Jeu {
       this.app.appendChild(table)
       this.creerCaseNonAccess()
       this.creerArme()
-<<<<<<< HEAD
       this.creerJoueur()
       
-=======
->>>>>>> Cases/armes
     
    }
   creerCaseNonAccess(){
@@ -55,28 +49,17 @@ class Jeu {
     kase.setAttribute('donnee-case-nonaccessible', 0)
     }
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> Cases/armes
   creerArme(){
     let armeAleatInt = 0
     let kase = null
     let tenueDeGrille = new TenueDeGrille('donnee-case-nonaccessible', null, null, this.longueurGrille)
     let arme = new Arme()
-<<<<<<< HEAD
 
     for(let i = 0; i < 10; i++){
       armeAleatInt = Math.floor(Math.random() * 5)
       kase = tenueDeGrille.parcourirTable()
 
-=======
-
-    for(let i = 0; i < 10; i++){
-      armeAleatInt = Math.floor(Math.random() * 5)
-      kase = tenueDeGrille.parcourirTable()
-
->>>>>>> Cases/armes
       let nomArmeAleat = arme.selectionneNomAleatoire(armeAleatInt)
       kase.setAttribute('donnee-arme',nomArmeAleat)
       kase.className = nomArmeAleat
@@ -87,7 +70,6 @@ creerJoueur(){
     let tenueDeGrille = new TenueDeGrille
     let setJoueur = false
 
-<<<<<<< HEAD
     for(let i = 0; i < 2; i++){
       let parcourirTable = tenueDeGrille.parcourirTable()
       this.JouerTab[i].postionId = parcourirTable.id
@@ -103,11 +85,8 @@ creerJoueur(){
         parcourirTable.setAttribute('donnee-class','joueur-2')
       }
     }
-=======
->>>>>>> Cases/armes
 }
 
 }
-
 
 export{Jeu}
