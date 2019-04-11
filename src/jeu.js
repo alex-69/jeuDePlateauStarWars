@@ -37,6 +37,7 @@ class Jeu {
       this.creerCaseNonAccess()
       this.creerArme()
       this.creerJoueur()
+      
     
    }
   creerCaseNonAccess(){
@@ -84,10 +85,9 @@ creerJoueur(){
         parcourirTable.setAttribute('donnee-class','joueur-2')
       }
     }
-
-
 }
 
+}
 
 
 export{Jeu}
