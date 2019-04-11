@@ -2,6 +2,7 @@
 
 
 import{TenueDeGrille} from './tenueDeGrille' 
+import{Arme} from './armes'
 
 
 class Jeu {
@@ -34,18 +35,32 @@ class Jeu {
       this.creerCaseNonAccess()
     
    }
-creerCaseNonAccess(){
- let tenueDeGrille = new TenueDeGrille(null, null, null, this.longueurGrille)
-  let kase = null
-  for(let i = 0; i < 50; i++){
+  creerCaseNonAccess(){
+    let tenueDeGrille = new TenueDeGrille(null, null, null, this.longueurGrille)
+    let kase = null
+    for(let i = 0; i < 50; i++){
     kase = tenueDeGrille.parcourirTable()
     kase.style.backgroundColor = 'black'
-    kase.setAttribute('donnees-caseaccess', 0)
-  
+    kase.setAttribute('donnee-case-accessible', 0)
+    }
+  }
+  CreerArme(){
+    let armeAleatInt = 0
+    let kase = null
+    let tenueDeGrille = new TenueDeGrille('donnee-case-accessible', null, null, this.longueurGrille)
+    let arme = new Arme()
 
+    for(i=0; i < 10; i++){
+      armeAleatInt = Math.floor(Math.random() * 5)
+      kase = tenueDeGrille.parcourirTable()
+
+      let nomArmeAleat = arme.SelectionneNomAleatoire(armeAleatInt)
+      kase.setAttribute('donnee-arme',nomArmeAleat)
+      kase.className(nomArmeAleat)
+      
+    }
   }
 
-}
 }
 
 
