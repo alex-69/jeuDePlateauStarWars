@@ -3,7 +3,7 @@ class Joueur{
     this.Nom = null;
     this.force = 100;
     this.positionId = null;
-    this.jouerTab[
+    this.joueurTab = [
       {
         "id":0,
         "nom": "Luke",
@@ -54,7 +54,7 @@ class Joueur{
   }
 
   RecupererJoueurTab(){
-  return this.jouerTab
+  return this.joueurTab
   }
 }
 

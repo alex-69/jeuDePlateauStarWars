@@ -54,3 +54,13 @@ table{
   background-image: url('./images/SoldatClone.png');
   background-size: 100% 100%;
 }
+
+.joueur1{
+  background-image: url('./images/perso1_luke.png');
+  background-size: 100% 100%;
+}
+
+.joueur2{
+  background-size: url('./images/perso2_vador.png');
+  background-size: 100% 100%;
+}
