@@ -53,8 +53,9 @@ class Joueur{
     this.positionId = id
   }
 
-}RecupererJoueurTab(){
+  RecupererJoueurTab(){
   return this.jouerTab
+  }
 }
 
 export{Joueur}

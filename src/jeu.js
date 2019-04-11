@@ -3,6 +3,7 @@
 
 import{TenueDeGrille} from './tenueDeGrille' 
 import{Arme} from './armes'
+import{Joueur} from './joueurs'
 
 
 class Jeu {
@@ -65,8 +66,24 @@ class Jeu {
     }
   }
 creerJoueur(){
-    
-}
+    let tenueDeGrille = new TenueDeGrille
+    let setJoueur = false
+
+    for(let i = 0; i < 2; i++){
+      let parcourirTable = tenueDeGrille.parcourirTable()
+      this.JouerTab[i].postionId = parcourirTable.id
+
+      if(!setJoueur){
+        parcourirTable.className = 'joueur1'
+        parcourirTable.setAttribute('donnee-joueur', this.joueurTab[i].nom)
+        parcourirTable.setAttribute('donnee-class','joueur-1')
+        setJoueur = true
+      }else{
+        parcourirTable.className = 'joueur2'
+        parcourirTable.setAttribute('donnee-joueur', this.joueurTab[i].nom)
+        parcourirTable.setAttribute('donnee-class','joueur-2')
+      }
+    }
 
 
 }
