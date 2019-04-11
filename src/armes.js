@@ -1,19 +1,47 @@
 
-export {Arme};
 
 
-function Arme() {
+class Arme{
+  constructor(){
+    this.armeTab = [
+      {
+        "nom": "Blaster",
+        "degats": 10
+      },
+      {
+        "nom": "Eclair",
+        "degats": 30
+      },
+      {
+        "nom": "SoldatClone",
+        "degats": 15
+      },
+      {
+        "nom": "R2d2",
+        "degats": 15
+      },
+      {
+        "nom": "SabreRouge",
+       "degats": 20
+      },
+      {
+        "nom": "SabreBleu",
+        "degats": 20
+      },
 
-  // Initialise les armes
-  this.initArme = function(nom, degat, elm) {
-    this.nom = nom;
-    this.degat = degat;
-    this.elm = elm;
-  },
-
-  // Renvoie la description de l'arme
-  this.decrireArme = function() {
-    const description = this.nom + " fait " + this.degat + " points de dégâts";
-    return description;
+    ];
   }
-};
+
+  selectionneArme()
+  {
+    return this.armeTab
+  }
+
+  selectionneNomAleatoire(aleatInt)
+  {
+    
+    return this.armeTab[aleatInt].nom
+  }
+}
+
+export {Arme};
