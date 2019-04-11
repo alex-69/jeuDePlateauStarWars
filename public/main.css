@@ -25,3 +25,32 @@ table{
     margin: auto;
     margin-top: 10%;
 }
+
+.SabreRouge{
+  background-image: url('./images/SabreRouge.png');
+  background-size: 100% 100%;
+}
+.SabreBleu{
+  background-image: url('./images/SabreBleu.png');
+  background-size: 100% 100%;
+}
+
+.Blaster{
+  background-image: url('./images/Blaster.png');
+  background-size: 100% 100%;
+}
+
+.Eclair{
+  background-image: url('./images/Eclair.png');
+  background-size: 100% 100%;
+}
+
+.R2d2{
+  background-image: url('./images/R2d2.png');
+  background-size: 100% 100%;
+}
+
+.SoldatClone{
+  background-image: url('./images/SoldatClone.png');
+  background-size: 100% 100%;
+}

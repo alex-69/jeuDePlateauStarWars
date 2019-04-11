@@ -33,6 +33,7 @@ class Jeu {
       }
       this.app.appendChild(table)
       this.creerCaseNonAccess()
+      this.creerArme()
     
    }
   creerCaseNonAccess(){
@@ -41,22 +42,22 @@ class Jeu {
     for(let i = 0; i < 50; i++){
     kase = tenueDeGrille.parcourirTable()
     kase.style.backgroundColor = 'black'
-    kase.setAttribute('donnee-case-accessible', 0)
+    kase.setAttribute('donnee-case-nonaccessible', 0)
     }
   }
-  CreerArme(){
+  creerArme(){
     let armeAleatInt = 0
     let kase = null
-    let tenueDeGrille = new TenueDeGrille('donnee-case-accessible', null, null, this.longueurGrille)
+    let tenueDeGrille = new TenueDeGrille('donnee-case-nonaccessible', null, null, this.longueurGrille)
     let arme = new Arme()
 
-    for(i=0; i < 10; i++){
+    for(let i = 0; i < 10; i++){
       armeAleatInt = Math.floor(Math.random() * 5)
       kase = tenueDeGrille.parcourirTable()
 
-      let nomArmeAleat = arme.SelectionneNomAleatoire(armeAleatInt)
+      let nomArmeAleat = arme.selectionneNomAleatoire(armeAleatInt)
       kase.setAttribute('donnee-arme',nomArmeAleat)
-      kase.className(nomArmeAleat)
+      kase.className = nomArmeAleat
       
     }
   }

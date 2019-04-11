@@ -5,40 +5,43 @@ class Arme{
   constructor(){
     this.armeTab = [
       {
-        "nom": "sabreRouge",
-       "dégats": 20
-      },
-      {
-        "nom": "SabreBleu",
-        "dégats": 20
-      },
-      {
         "nom": "Blaster",
-        "dégats": 10
+        "degats": 10
       },
       {
         "nom": "Eclair",
-        "dégats": 30
+        "degats": 30
       },
       {
-        "nom": "Arbalète laser",
-        "dégats": 15
+        "nom": "SoldatClone",
+        "degats": 15
       },
       {
-        "non": "Bâton balster",
-        "dégats":15
-      }
+        "nom": "R2d2",
+        "degats": 15
+      },
+      {
+        "nom": "SabreRouge",
+       "degats": 20
+      },
+      {
+        "nom": "SabreBleu",
+        "degats": 20
+      },
+
     ];
   }
 
-  SelectionneArme()
+  selectionneArme()
   {
     return this.armeTab
   }
 
-  SelectionneNomAleatoire(aleatInt)
+  selectionneNomAleatoire(aleatInt)
   {
-    this.armeTab[aleatInt].name
+    
+    return this.armeTab[aleatInt].nom
   }
 }
+
 export {Arme};
