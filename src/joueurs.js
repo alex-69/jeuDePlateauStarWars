@@ -1,7 +1,9 @@
 class Joueur{
   constructor(){
-    this.Nom = null;
+    this.nom = null;
     this.force = 100;
+    this.arme = null;
+    this.deplacer = false;
     this.positionId = null;
     this.joueurTab = [
       {
@@ -9,6 +11,7 @@ class Joueur{
         "nom": "Luke",
         "force": this.force,
         "arme": this.arme,
+        "deplacer": this.deplacer,
         "positionId": this.positionId,
       },
       {
@@ -16,24 +19,29 @@ class Joueur{
         "non":"Vador",
         "force":this.force,
         "arme": this.arme,
+        "deplacer": this.deplacer,
         "positionId": this.positionId,
       }
     ]
   }
 
-  RecupererNom(){
+  recupererNom(){
     return this.nom
   } 
 
-  RecupererForce(){
+  recupererForce(){
     return this.force
   }
 
-  RecupererArme(){
+  recupererArme(){
     return this.arme
   }
 
-  RecupererPositionId(){
+  recupererDeplacer(){
+    return this.deplacer
+  }
+
+  recupererPositionId(){
     return this.positionId
   }
   
@@ -49,13 +57,19 @@ class Joueur{
     this.arme = arme
   }
 
+  modifierDeplacer(deplacer){
+    this.deplacer = deplacer
+  }
   modifierPositionId(id){
     this.positionId = id
   }
 
-  RecupererJoueurTab(){
+  recupererJoueurTab(){
   return this.joueurTab
   }
+  
+  
+
 }
 
 export{Joueur}
