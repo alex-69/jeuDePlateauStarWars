@@ -1,6 +1,6 @@
 class Joueur{
   constructor(){
-    this.nom = null;
+    this.Nom = null;
     this.force = 100;
     this.arme = null;
     this.deplacer = false;
@@ -25,15 +25,15 @@ class Joueur{
     ]
   }
 
-  recupererNom(){
+  RecupererNom(){
     return this.nom
   } 
 
-  recupererForce(){
+  RecupererForce(){
     return this.force
   }
 
-  recupererArme(){
+  RecupererArme(){
     return this.arme
   }
 
@@ -41,7 +41,7 @@ class Joueur{
     return this.deplacer
   }
 
-  recupererPositionId(){
+  RecupererPositionId(){
     return this.positionId
   }
   
@@ -64,11 +64,50 @@ class Joueur{
     this.positionId = id
   }
 
-  recupererJoueurTab(){
-  return this.joueurTab
+
+  quiPeutJouer()
+  {
+    let aleatInt = null,
+    for(let i = 0; i < 2; i++)
+    {
+       aleatInt = Math.floor(Math.ramdom()*2)
+    }
+    this.joueurTab[aleatInt].move = true;
   }
-  
-  
+
+  recupererQuiPeutJouer()
+  {
+    for(let i = 0; i < 2; i++)
+    {
+      if(this.joueurTab[i].move == true)
+      {
+        return this.joueurTab[i]
+      }
+    }
+
+    return null
+  }
+
+  permettreDeplacementJoueur(joueurs, joueur)
+  {
+    joueur.compterDeplacement = 0
+    if(joueurs[0] == true){
+      joueurs[0] == false
+      joueurs[1] == true
+      console.log(joueur[1])
+    }else if (joueurs[1] == true){
+      joueurs[1] == false
+      joueurs[0] == true
+      console.log(joueur[0])
+    }
+    console.log(joueurs)
+    return joueurs
+    
+  }
+
+  recupererJoueurTab(){
+    return this.joueurTab
+    }
 
 }
 
