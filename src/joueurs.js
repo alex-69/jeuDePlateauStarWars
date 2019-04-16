@@ -65,9 +65,49 @@ class Joueur{
   }
 
 
-  RecupererJoueurTab(){
-  return this.joueurTab
+  quiPeutJouer()
+  {
+    let aleatInt = null,
+    for(let i = 0; i < 2; i++)
+    {
+       aleatInt = Math.floor(Math.ramdom()*2)
+    }
+    this.joueurTab[aleatInt].move = true;
   }
+
+  recupererQuiPeutJouer()
+  {
+    for(let i = 0; i < 2; i++)
+    {
+      if(this.joueurTab[i].move == true)
+      {
+        return this.joueurTab[i]
+      }
+    }
+
+    return null
+  }
+
+  permettreDeplacementJoueur(joueurs, joueur)
+  {
+    joueur.compterDeplacement = 0
+    if(joueurs[0] == true){
+      joueurs[0] == false
+      joueurs[1] == true
+      console.log(joueur[1])
+    }else if (joueurs[1] == true){
+      joueurs[1] == false
+      joueurs[0] == true
+      console.log(joueur[0])
+    }
+    console.log(joueurs)
+    return joueurs
+    
+  }
+
+  recupererJoueurTab(){
+    return this.joueurTab
+    }
 
 }
 
