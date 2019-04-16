@@ -67,10 +67,10 @@ class Joueur{
 
   quiPeutJouer()
   {
-    let aleatInt = null,
+    let aleatInt = null;
     for(let i = 0; i < 2; i++)
     {
-       aleatInt = Math.floor(Math.ramdom()*2)
+       aleatInt = Math.floor(Math.random()*2)
     }
     this.joueurTab[aleatInt].move = true;
   }
