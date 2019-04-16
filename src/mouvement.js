@@ -22,4 +22,17 @@ class Deplacement{
         
     }
 
+    // vérifier toutes les cases disponibles autour du joueur
+
+casesDisponibles(kaseActuel, kaseSuivante, joueur, joueurTab){
+    const LIMIT_DEPLACER = 3
+    let test = new Player()
+    
+    if(kaseSuivante.id != kaseActuel.id && != kaseSuivante.hasAttribute('donnee-joueur') && != kaseSuivante.hasAttribute('donnee-case-nonaccessible')){
+        //mettre à jour la position du joueur
+    }
+    
+}
+
+
 }
