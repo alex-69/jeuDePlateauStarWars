@@ -71,26 +71,26 @@ class Jeu {
       
     }
   }
-creerJoueur(){
-    let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible','data-arme',null,this.longueurGrille)
-    let setJoueur = false
+  creerJoueur(){
+      let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible','data-arme',null,this.longueurGrille)
+      let setJoueur = false
 
-    for(let i = 0; i < 2; i++){
-      let parcourirTable = tenueDeGrille.parcourirTable()
-      this.joueurTab[i].postionId = parcourirTable.id
+      for(let i = 0; i < 2; i++){
+        let parcourirTable = tenueDeGrille.parcourirTable()
+        this.joueurTab[i].postionId = parcourirTable.id
 
-      if(!setJoueur){
-        parcourirTable.className = 'joueur1'
-        parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
-        parcourirTable.setAttribute('data-class','joueur1')
-        setJoueur = true
-      }else{
-        parcourirTable.className = 'joueur2'
-        parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
-        parcourirTable.setAttribute('data-class','joueur2')
+        if(!setJoueur){
+          parcourirTable.className = 'joueur1'
+          parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
+          parcourirTable.setAttribute('data-class','joueur1')
+          setJoueur = true
+        }else{
+          parcourirTable.className = 'joueur2'
+          parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
+          parcourirTable.setAttribute('data-class','joueur2')
+        }
       }
-    }
-}
+  }
 
 }
 
