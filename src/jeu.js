@@ -19,7 +19,10 @@ class Jeu {
       let table = document.createElement('table')
       let body = document.createElement('tbody')
       let joueur = new Joueur()
-      this.joueurTab = joueur.RecupererJoueurTab()
+
+      this.joueurTab = joueur.recupererJoueurTab()
+      //decide qui joue aléatoirement
+      joueur.quiPeutJouer();
       table.appendChild(body)
 
       for(let i = 0; i < this.ligne; i++){
@@ -48,14 +51,14 @@ class Jeu {
     for(let i = 0; i < 50; i++){
     kase = tenueDeGrille.parcourirTable()
     kase.style.backgroundColor = 'black'
-    kase.setAttribute('donnee-case-nonaccessible', 0)
+    kase.setAttribute('data-case-nonaccessible', 0)
     }
   }
 
   creerArme(){
     let armeAleatInt = 0
     let kase = null
-    let tenueDeGrille = new TenueDeGrille('donnee-case-nonaccessible', null, null, this.longueurGrille)
+    let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible', null, null, this.longueurGrille)
     let arme = new Arme()
 
     for(let i = 0; i < 10; i++){
@@ -63,13 +66,13 @@ class Jeu {
       kase = tenueDeGrille.parcourirTable()
 
       let nomArmeAleat = arme.selectionneNomAleatoire(armeAleatInt)
-      kase.setAttribute('donnee-arme',nomArmeAleat)
+      kase.setAttribute('data-arme',nomArmeAleat)
       kase.className = nomArmeAleat
       
     }
   }
 creerJoueur(){
-    let tenueDeGrille = new TenueDeGrille('donnee-case-nonaccessible','donnee-arme',null,this.longueurGrille)
+    let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible','data-arme',null,this.longueurGrille)
     let setJoueur = false
 
     for(let i = 0; i < 2; i++){
@@ -78,13 +81,13 @@ creerJoueur(){
 
       if(!setJoueur){
         parcourirTable.className = 'joueur1'
-        parcourirTable.setAttribute('donnee-joueur', this.joueurTab[i].nom)
-        parcourirTable.setAttribute('donnee-class','joueur1')
+        parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
+        parcourirTable.setAttribute('data-class','joueur1')
         setJoueur = true
       }else{
         parcourirTable.className = 'joueur2'
-        parcourirTable.setAttribute('donnee-joueur', this.joueurTab[i].nom)
-        parcourirTable.setAttribute('donnee-class','joueur2')
+        parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
+        parcourirTable.setAttribute('data-class','joueur2')
       }
     }
 }
