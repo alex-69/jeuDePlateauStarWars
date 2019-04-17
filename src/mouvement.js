@@ -31,14 +31,15 @@ class Deplacement{
         
         if(kaseSuivante.id != kaseActuel.id && !kaseSuivante.hasAttribute('data-joueur') && ! kaseSuivante.hasAttribute('data-case-nonaccessible')){
             //mettre à jour la position du joueur
-            kaseSuivante.SetAttribute('data-class', kaseActuel.dataset.class)
-            kaseSuivante.SetAttribute('data-player', player.nom)
+            
+            kaseSuivante.setAttribute('data-class', kaseActuel.dataset.class)
+            kaseSuivante.setAttribute('data-joueur', joueur.nom)
             kaseSuivante.className = kaseActuel.dataset.class
 
             //supprimer l'ancienne position du joueur
             kaseActuel.classlist.remove(kaseActuel.dataset.class)
             kaseActuel.removeAtribute('data-class')
-            kaseActuel.removeAtribute('data-player')
+            kaseActuel.removeAtribute('data-joueur')
 
             joueur.positionId = nextKase.id
             joueur.compterDeplacement++
