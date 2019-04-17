@@ -4,6 +4,7 @@
 import{TenueDeGrille} from './tenueDeGrille' 
 import{Arme} from './armes'
 import{Joueur} from './joueurs'
+import{Deplacement} from './mouvement'
 
 
 class Jeu {
@@ -18,6 +19,7 @@ class Jeu {
    
       let table = document.createElement('table')
       let body = document.createElement('tbody')
+      let deplacement = new Deplacement()
       let joueur = new Joueur()
 
       this.joueurTab = joueur.recupererJoueurTab()
@@ -34,6 +36,10 @@ class Jeu {
         td.setAttribute("data-x", j)
         td.setAttribute("data-y", i)
         td.id = "td-" + i+j
+
+        td.addEventListener('click', () => {
+          this.joueurTab = deplacement.deplacer(td.id, this.joueurTab)
+        })
         tr.appendChild(td)
 
         }
@@ -91,7 +97,6 @@ class Jeu {
         }
       }
   }
-
 }
 
 export{Jeu}
