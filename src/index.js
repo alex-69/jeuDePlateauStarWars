@@ -1,6 +1,6 @@
+import { Jeu } from "./jeu.js";
 
-import{jeu} from './game.js';
+let jeu = new Jeu(10, 10);
 
+jeu.creationGrille();
 
-const nouveauJeu = new jeu();
-nouveauJeu.lancementJeu();
