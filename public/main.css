@@ -61,6 +61,6 @@ table{
 }
 
 .joueur2{
-  background-size: url('./images/perso2_vador.png');
+  background-image: url('./images/perso2_vador.png');
   background-size: 100% 100%;
 }
