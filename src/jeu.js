@@ -21,10 +21,10 @@ class Jeu {
       let body = document.createElement('tbody')
       let deplacement = new Deplacement()
       let joueur = new Joueur()
-
-      this.joueurTab = joueur.recupererJoueurTab()
-      //decide qui joue aléatoirement
+       //decide qui joue aléatoirement
       joueur.quiPeutJouer();
+      this.joueurTab = joueur.recupererJoueurTab()
+     
       table.appendChild(body)
 
       for(let i = 0; i < this.ligne; i++){
@@ -83,7 +83,7 @@ class Jeu {
 
       for(let i = 0; i < 2; i++){
         let parcourirTable = tenueDeGrille.parcourirTable()
-        this.joueurTab[i].postionId = parcourirTable.id
+        this.joueurTab[i].positionId = parcourirTable.id
 
         if(!setJoueur){
           parcourirTable.className = 'joueur1'

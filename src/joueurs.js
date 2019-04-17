@@ -1,6 +1,6 @@
 class Joueur{
   constructor(){
-    this.Nom = null;
+    this.nom = null;
     this.force = 100;
     this.arme = null;
     this.deplacer = false;
@@ -72,14 +72,15 @@ class Joueur{
     {
        aleatInt = Math.floor(Math.random()*2)
     }
-    this.joueurTab[aleatInt].move = true;
+    
+    this.joueurTab[aleatInt].deplacer = true;
   }
 
   recupererQuiPeutJouer()
   {
     for(let i = 0; i < 2; i++)
     {
-      if(this.joueurTab[i].move == true)
+      if(this.joueurTab[i].deplacer == true)
       {
         return this.joueurTab[i]
       }

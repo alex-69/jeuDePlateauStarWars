@@ -16,6 +16,7 @@ class Deplacement{
 
         //case ou le joueur doit aller
         let kaseSuivante = document.getElementById(idCase)
+        
 
         this.casesDisponibles(kaseActuel, kaseSuivante, joueur, joueurTab)
         return joueurTab
