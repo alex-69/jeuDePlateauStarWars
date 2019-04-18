@@ -89,22 +89,6 @@ class Joueur{
     return null
   }
 
-  permettreDeplacementJoueur(joueurs, joueur)
-  {
-    joueur.compterDeplacement = 0
-    if(joueurs[0] == true){
-      joueurs[0] == false
-      joueurs[1] == true
-      console.log(joueur[1])
-    }else if (joueurs[1] == true){
-      joueurs[1] == false
-      joueurs[0] == true
-      console.log(joueur[0])
-    }
-    console.log(joueurs)
-    return joueurs
-    
-  }
 
   recupererJoueurTab(){
     return this.joueurTab

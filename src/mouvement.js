@@ -4,7 +4,6 @@ class Deplacement{
 
     deplacer(idCase, joueurTab){
         let joueur = null
-
         for(let i = 0; i < joueurTab.length; i++){
             if(joueurTab[i].deplacer == true)
             {
@@ -12,47 +11,57 @@ class Deplacement{
             }
         }
         //case actuelle du joueur
-        let kaseActuel = document.getElementById(joueur.positionId)
-
+        let kaseActuelle = document.getElementById(joueur.positionId)
+        
         //case ou le joueur doit aller
         let kaseSuivante = document.getElementById(idCase)
         
 
-        this.casesDisponibles(kaseActuel, kaseSuivante, joueur, joueurTab)
-        return joueurTab
-        
+        this.casesDisponibles(kaseActuelle, kaseSuivante, joueur)
+
+        return joueurTab 
+    }
+
+    getDiagIndice(x,y){
+
+
     }
 
     // vérifier toutes les cases disponibles autour du joueur
-
-    casesDisponibles(kaseActuel, kaseSuivante, joueur, joueurTab){
-        const LIMIT_DEPLACER = 3
-        let test = new Joueur()
+    
+    casesDisponibles(kaseActuelle, kaseSuivante, joueur,){
         
-        if(kaseSuivante.id != kaseActuel.id && !kaseSuivante.hasAttribute('data-joueur') && ! kaseSuivante.hasAttribute('data-case-nonaccessible')){
-            //mettre à jour la position du joueur
+        if(kaseSuivante.id != kaseActuelle.id && !kaseSuivante.hasAttribute('data-joueur') && ! kaseSuivante.hasAttribute('data-case-nonaccessible')){
+            const xkaseSuivante = kaseSuivante.getAttribute('data-x')
+            const ykaseSuivante = kaseSuivante.getAttribute('data-y')
+
+            const xkaseActuelle = kaseActuelle.getAttribute('data-x')
+            const ykaseActuelle = kaseActuelle.getAttribute('data-y')
             
-            kaseSuivante.setAttribute('data-class', kaseActuel.dataset.class)
-            kaseSuivante.setAttribute('data-joueur', joueur.nom)
-            kaseSuivante.className = kaseActuel.dataset.class
+            
+            if((xkaseSuivante != xkaseActuelle && ykaseActuelle == ykaseSuivante)^(ykaseSuivante != ykaseActuelle && xkaseActuelle == xkaseSuivante)){
 
-            //supprimer l'ancienne position du joueur
-            kaseActuel.classList.remove(kaseActuel.dataset.class)
-            kaseActuel.removeAttribute('data-class')
-            kaseActuel.removeAttribute('data-joueur')
+                kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
+                kaseSuivante.setAttribute('data-joueur', joueur.nom)
+                kaseSuivante.className = kaseActuelle.dataset.class
 
-            joueur.positionId = kaseSuivante.id
-            joueur.compterDeplacement++
-
-            if(joueur.compterDeplacement == LIMIT_DEPLACER){
-                let d = test.permettreDeplacementJoueur(joueurTab, joueur)
+                //supprimer l'ancienne position du joueur
+                kaseActuelle.classList.remove(kaseActuelle.dataset.class)
+                kaseActuelle.removeAttribute('data-class')
+                kaseActuelle.removeAttribute('data-joueur')
+                joueur.positionId = kaseSuivante.id 
+               
             }
-                return true;
+            else{
+                console.log('mouvement impossible')
+                
+            }
         }
-        return false;
-        
+        }
     }
 
-}
+
+
+
 
 export{Deplacement}
