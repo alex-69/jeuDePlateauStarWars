@@ -37,11 +37,11 @@ class Deplacement{
             kaseSuivante.className = kaseActuel.dataset.class
 
             //supprimer l'ancienne position du joueur
-            kaseActuel.classlist.remove(kaseActuel.dataset.class)
-            kaseActuel.removeAtribute('data-class')
-            kaseActuel.removeAtribute('data-joueur')
+            kaseActuel.classList.remove(kaseActuel.dataset.class)
+            kaseActuel.removeAttribute('data-class')
+            kaseActuel.removeAttribute('data-joueur')
 
-            joueur.positionId = nextKase.id
+            joueur.positionId = kaseSuivante.id
             joueur.compterDeplacement++
 
             if(joueur.compterDeplacement == LIMIT_DEPLACER){
