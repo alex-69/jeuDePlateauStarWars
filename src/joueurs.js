@@ -76,6 +76,8 @@ class Joueur{
     this.joueurTab[aleatInt].deplacer = true;
   }
 
+  
+
   recupererQuiPeutJouer()
   {
     for(let i = 0; i < 2; i++)
