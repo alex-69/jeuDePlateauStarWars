@@ -54,7 +54,7 @@ class Jeu {
   creerCaseNonAccess(){
     let tenueDeGrille = new TenueDeGrille(null, null, null, this.longueurGrille)
     let kase = null
-    for(let i = 0; i < 50; i++){
+    for(let i = 0; i < 25; i++){
     kase = tenueDeGrille.parcourirTable()
     kase.style.backgroundColor = 'black'
     kase.setAttribute('data-case-nonaccessible', 0)

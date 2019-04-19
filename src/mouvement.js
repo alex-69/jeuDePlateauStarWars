@@ -40,7 +40,8 @@ class Deplacement{
             
             
             if((xkaseSuivante != xkaseActuelle && ykaseActuelle == ykaseSuivante)^(ykaseSuivante != ykaseActuelle && xkaseActuelle == xkaseSuivante)){
-
+                if((xkaseSuivante - xkaseActuelle <= 3) ^ (xkaseSuivante - xkaseActuelle <= -4)){
+                if((ykaseSuivante - ykaseActuelle <= 3) ^ (ykaseSuivante - ykaseActuelle <= -4)){
                 kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
                 kaseSuivante.setAttribute('data-joueur', joueur.nom)
                 kaseSuivante.className = kaseActuelle.dataset.class
@@ -50,10 +51,11 @@ class Deplacement{
                 kaseActuelle.removeAttribute('data-class')
                 kaseActuelle.removeAttribute('data-joueur')
                 joueur.positionId = kaseSuivante.id 
-               
+                }else{console.log("nony")}
+            }else{console.log("nonx")}
             }
             else{
-                console.log('mouvement impossible')
+                console.log('non diag')
                 
             }
         }
