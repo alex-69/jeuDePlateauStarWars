@@ -30,37 +30,45 @@ class Deplacement{
     // vérifier toutes les cases disponibles autour du joueur
     
     casesDisponibles(kaseActuelle, kaseSuivante, joueur,){
-        
+
+        //cases indisponilbes = cases noires + cases avec un joueur
         if(kaseSuivante.id != kaseActuelle.id && !kaseSuivante.hasAttribute('data-joueur') && ! kaseSuivante.hasAttribute('data-case-nonaccessible')){
+
             const xkaseSuivante = kaseSuivante.getAttribute('data-x')
             const ykaseSuivante = kaseSuivante.getAttribute('data-y')
 
             const xkaseActuelle = kaseActuelle.getAttribute('data-x')
             const ykaseActuelle = kaseActuelle.getAttribute('data-y')
             
-            
+            //bloquer les déplacement en diagonale
             if((xkaseSuivante != xkaseActuelle && ykaseActuelle == ykaseSuivante)^(ykaseSuivante != ykaseActuelle && xkaseActuelle == xkaseSuivante)){
-                if((xkaseSuivante - xkaseActuelle <= 3) ^ (xkaseSuivante - xkaseActuelle <= -4)){
-                if((ykaseSuivante - ykaseActuelle <= 3) ^ (ykaseSuivante - ykaseActuelle <= -4)){
-                kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
-                kaseSuivante.setAttribute('data-joueur', joueur.nom)
-                kaseSuivante.className = kaseActuelle.dataset.class
 
-                //supprimer l'ancienne position du joueur
-                kaseActuelle.classList.remove(kaseActuelle.dataset.class)
-                kaseActuelle.removeAttribute('data-class')
-                kaseActuelle.removeAttribute('data-joueur')
-                joueur.positionId = kaseSuivante.id 
-                }else{console.log("nony")}
-            }else{console.log("nonx")}
+                //permettre les deplacement de 1 à 3 cases en ligne
+                if((xkaseSuivante - xkaseActuelle <= 3) ^ (xkaseSuivante - xkaseActuelle <= -4)){
+
+                    //permettre les deplacement de 1 à 3 cases en colonne
+                    if((ykaseSuivante - ykaseActuelle <= 3) ^ (ykaseSuivante - ykaseActuelle <= -4)){
+                        kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
+                        kaseSuivante.setAttribute('data-joueur', joueur.nom)
+                        kaseSuivante.className = kaseActuelle.dataset.class
+
+                        //supprimer l'ancienne position du joueur
+                        kaseActuelle.classList.remove(kaseActuelle.dataset.class)
+                        kaseActuelle.removeAttribute('data-class')
+                        kaseActuelle.removeAttribute('data-joueur')
+                        joueur.positionId = kaseSuivante.id 
+                    }else{
+                        console.log("nony")}
+                }else{
+                    console.log("nonx")}
             }
             else{
                 console.log('non diag')
                 
             }
         }
-        }
     }
+}
 
 
 
