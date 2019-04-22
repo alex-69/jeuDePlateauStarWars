@@ -48,46 +48,15 @@ class Deplacement{
 
                     //permettre les deplacement de 1 à 3 cases en colonne
                     if((ykaseSuivante - ykaseActuelle <= 3) ^ (ykaseSuivante - ykaseActuelle <= -4)){
+                        kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
+                        kaseSuivante.setAttribute('data-joueur', joueur.nom)
+                        kaseSuivante.className = kaseActuelle.dataset.class
 
-                        //si case suivante est un arme
-                        if(kaseSuivante.id = kaseSuivante.hasAttribute('data-arme-nouvelle')){
-
-                            //mettre à jour les attributs sur la nouvelle position
-                            kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
-                            kaseSuivante.setAttribute('data-joueur', joueur.nom)
-                            kaseSuivante.setAttribute('data-arme',kaseSuivante.dataset.armeNouvelle)
-                            kaseSuivante.setAttribute('data-arme-nouvelle',joueur.arme)
-                            kaseSuivante.className = kaseActuelle.dataset.class
-
-                            //supprimer l'ancienne position du joueur
-                            kaseActuelle.classList.remove(kaseActuelle.dataset.class)
-                            kaseActuelle.removeAttribute('data-class')
-                            kaseActuelle.removeAttribute('data-joueur')
-                            kaseActuelle.removeAttribute('data-arme')
-                            kaseActuelle.removeAttribute('class')
-                            
-                            joueur.positionId = kaseSuivante.id 
-                            console.log("case arme")
-
-                       }else{
-
-                            //mettre à jour les attributs sur la nouvelle position
-                            kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
-                            kaseSuivante.setAttribute('data-joueur', joueur.nom)
-                            kaseSuivante.className = kaseActuelle.dataset.class
-                            kaseSuivante.setAttribute('data-arme',joueur.arme)
-
-                            //mettre à jour l'ancienne position du joueur
-                            kaseActuelle.classList.remove(kaseActuelle.dataset.class)
-                            kaseActuelle.removeAttribute('data-class')
-                            kaseActuelle.removeAttribute('data-joueur')
-                            kaseActuelle.removeAttribute('data-arme')
-                            kaseActuelle.removeAttribute('class')
-                           
-
-                            joueur.positionId = kaseSuivante.id
-                            console.log("case vide")
-                            }
+                        //supprimer l'ancienne position du joueur
+                        kaseActuelle.classList.remove(kaseActuelle.dataset.class)
+                        kaseActuelle.removeAttribute('data-class')
+                        kaseActuelle.removeAttribute('data-joueur')
+                        joueur.positionId = kaseSuivante.id 
                     }else{
                         console.log("nony")}
                 }else{

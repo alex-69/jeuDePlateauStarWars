@@ -13,7 +13,6 @@ class Jeu {
      this.colonne = colonne;
      this.app = document.getElementById('app');
      this.joueurTab = [];
-     this.arme = null;
       this.longueurGrille = this.ligne * this.colonne;
    }
    creationGrille(){
@@ -73,7 +72,7 @@ class Jeu {
       kase = tenueDeGrille.parcourirTable()
 
       let nomArmeAleat = arme.selectionneNomAleatoire(armeAleatInt)
-      kase.setAttribute('data-arme-nouvelle',nomArmeAleat)
+      kase.setAttribute('data-arme',nomArmeAleat)
       kase.className = nomArmeAleat
       
     }
@@ -90,13 +89,11 @@ class Jeu {
           parcourirTable.className = 'joueur1'
           parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
           parcourirTable.setAttribute('data-class','joueur1')
-          parcourirTable.setAttribute('data-arme', this.joueurTab[i].arme = 'SabreBleu')
           setJoueur = true
         }else{
           parcourirTable.className = 'joueur2'
           parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
           parcourirTable.setAttribute('data-class','joueur2')
-          parcourirTable.setAttribute('data-arme','SabreRouge')
         }
       }
   }
