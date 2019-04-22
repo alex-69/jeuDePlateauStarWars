@@ -17,61 +17,89 @@ class Deplacement{
         let kaseSuivante = document.getElementById(idCase)
         
 
-        this.casesDisponibles(kaseActuelle, kaseSuivante, joueur)
+        this.casesIndisponibles(kaseActuelle, kaseSuivante, joueur)
 
         return joueurTab 
     }
 
-    getDiagIndice(x,y){
-
-
-    }
+    
 
     // vérifier toutes les cases disponibles autour du joueur
-    
-    casesDisponibles(kaseActuelle, kaseSuivante, joueur,){
 
-        //cases indisponilbes = cases noires + cases avec un joueur
-        if(kaseSuivante.id != kaseActuelle.id && !kaseSuivante.hasAttribute('data-joueur') && ! kaseSuivante.hasAttribute('data-case-nonaccessible')){
+    casesIndisponibles(kaseActuelle, kaseSuivante, joueur){
 
-            const xkaseSuivante = kaseSuivante.getAttribute('data-x')
-            const ykaseSuivante = kaseSuivante.getAttribute('data-y')
+        const xkaseSuivante = kaseSuivante.getAttribute('data-x')
+        const ykaseSuivante = kaseSuivante.getAttribute('data-y')
 
-            const xkaseActuelle = kaseActuelle.getAttribute('data-x')
-            const ykaseActuelle = kaseActuelle.getAttribute('data-y')
-            
-            //bloquer les déplacement en diagonale
-            if((xkaseSuivante != xkaseActuelle && ykaseActuelle == ykaseSuivante)^(ykaseSuivante != ykaseActuelle && xkaseActuelle == xkaseSuivante)){
+        const xkaseActuelle = kaseActuelle.getAttribute('data-x')
+        const ykaseActuelle = kaseActuelle.getAttribute('data-y')
+        this.AttributsJoueurAjour(kaseActuelle, kaseSuivante, joueur)
+        
+    }
 
-                //permettre les deplacement de 1 à 3 cases en ligne
-                if((xkaseSuivante - xkaseActuelle <= 3) ^ (xkaseSuivante - xkaseActuelle <= -4)){
+    AttributsJoueurAjour(kaseActuelle, kaseSuivante, joueur){
+        //mettre à jour la nouvelle position du joueur
+        kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
+        kaseSuivante.setAttribute('data-joueur', joueur.nom)
+        kaseSuivante.className = kaseActuelle.dataset.class
 
-                    //permettre les deplacement de 1 à 3 cases en colonne
-                    if((ykaseSuivante - ykaseActuelle <= 3) ^ (ykaseSuivante - ykaseActuelle <= -4)){
-                        kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
-                        kaseSuivante.setAttribute('data-joueur', joueur.nom)
-                        kaseSuivante.className = kaseActuelle.dataset.class
-
-                        //supprimer l'ancienne position du joueur
-                        kaseActuelle.classList.remove(kaseActuelle.dataset.class)
-                        kaseActuelle.removeAttribute('data-class')
-                        kaseActuelle.removeAttribute('data-joueur')
-                        joueur.positionId = kaseSuivante.id 
-                    }else{
-                        console.log("nony")}
-                }else{
-                    console.log("nonx")}
-            }
-            else{
-                console.log('non diag')
-                
-            }
-        }
+        //supprimer l'ancienne position du joueur
+        kaseActuelle.classList.remove(kaseActuelle.dataset.class)
+        kaseActuelle.removeAttribute('data-class')
+        kaseActuelle.removeAttribute('data-joueur')
+        kaseActuelle.removeAttribute('class')
+        
+        joueur.positionId = kaseSuivante.id
     }
 }
-
-
-
+    
 
 
 export{Deplacement}
+
+/* for(let i = Math.min(xkaseActuelle, xkaseSuivante); i <= Math.max(xkaseActuelle,xkaseSuivante); i++){
+    for(let j = Math.min(ykaseActuelle, ykaseSuivante); j <= Math.max(ykaseActuelle,ykaseSuivante); j++){
+        let idKase = "td-" + i+j 
+    
+    if( idKase !=  kaseSuivante.hasAttribute('data-case-nonaccessible') ){
+
+         
+
+       
+        }else{
+            console.log('cases sautées')
+        }
+        } 
+    }
+
+*/
+/*
+ //cases indisponilbes = cases noires + cases avec un joueur
+ if(kaseSuivante.id != kaseActuelle.id && !kaseSuivante.hasAttribute('data-joueur') && ! kaseSuivante.hasAttribute('data-case-nonaccessible')){
+
+    //bloquer les déplacement en diagonale
+    if((xkaseSuivante != xkaseActuelle && ykaseActuelle == ykaseSuivante)^(ykaseSuivante != ykaseActuelle && xkaseActuelle == xkaseSuivante)){
+
+        //permettre les deplacement de 1 à 3 cases en ligne
+        if((xkaseSuivante - xkaseActuelle <= 3) ^ (xkaseSuivante - xkaseActuelle <= -4)){
+
+            //permettre les deplacement de 1 à 3 cases en colonne
+            if((ykaseSuivante - ykaseActuelle <= 3) ^ (ykaseSuivante - ykaseActuelle <= -4)){
+
+                       
+                        
+
+                }else{
+                    console.log('plus de 3 cases y ')
+                }
+                
+            }else{
+                console.log('plus de 3 cases x')
+            }
+        }else{
+            console.log('case en diag')
+        }
+    }else{
+        console.log('cases prises')
+    }
+    */
