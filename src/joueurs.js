@@ -16,7 +16,7 @@ class Joueur{
       },
       {
         "id":1,
-        "non":"Vador",
+        "nom":"Vador",
         "force":this.force,
         "arme": this.arme,
         "deplacer": this.deplacer,
