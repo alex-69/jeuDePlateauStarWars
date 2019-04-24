@@ -113,17 +113,34 @@ class Deplacement{
         
     //mettre à jour les attributs après déplacement
     attributsJoueurAjour(kaseActuelle, kaseSuivante, joueur){
+        
         //mettre à jour la nouvelle position du joueur
         kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
         kaseSuivante.setAttribute('data-joueur', joueur.nom)
         kaseSuivante.className = kaseActuelle.dataset.class
-
+            //si passe sur une case contenant une arme, mettre à jour l'arme du joueur
+            if(kaseSuivante.getAttribute('data-arme')){
+            
+            kaseSuivante.setAttribute('data-arme-ancienne',joueur.arme)
+            kaseSuivante.setAttribute('data-arme', joueur.arme = kaseSuivante.getAttribute('data-arme'))
+            }else{
+            kaseSuivante.setAttribute('data-arme', joueur.arme)
+            }
+        
         //supprimer l'ancienne position du joueur
         kaseActuelle.classList.remove(kaseActuelle.dataset.class)
         kaseActuelle.removeAttribute('data-class')
         kaseActuelle.removeAttribute('data-joueur')
         kaseActuelle.removeAttribute('class')
-        
+
+            //depose l'arme du joueur
+            if(kaseActuelle.getAttribute('data-arme-ancienne')){
+                kaseActuelle.setAttribute('data-arme', kaseActuelle.getAttribute('data-arme-ancienne'))
+                kaseActuelle.className = kaseActuelle.getAttribute('data-arme-ancienne')
+                kaseActuelle.removeAttribute('data-arme-ancienne')
+            }else{
+                kaseActuelle.removeAttribute('data-arme')
+            }
         joueur.positionId = kaseSuivante.id
     }
 }

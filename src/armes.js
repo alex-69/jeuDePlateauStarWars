@@ -42,6 +42,10 @@ class Arme{
     
     return this.armeTab[aleatInt].nom
   }
+
+  recupererNom(arme){
+    return this.armeTab[arme].nom
+  } 
 }
 
 export {Arme};

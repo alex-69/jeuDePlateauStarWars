@@ -82,21 +82,23 @@ class Jeu {
   creerJoueur(){
       let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible','data-arme',null,this.longueurGrille)
       let setJoueur = false
+    
 
       for(let i = 0; i < 2; i++){
         let parcourirTable = tenueDeGrille.parcourirTable()
         this.joueurTab[i].positionId = parcourirTable.id
+        let arme = new Arme;
 
         if(!setJoueur){
           parcourirTable.className = 'joueur1'
           parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
-          parcourirTable.setAttribute('data-joueur', this.joueurTab[i].arme = this.armeTab[5])
+          parcourirTable.setAttribute('data-arme', this.joueurTab[i].arme = arme.recupererNom(5))
           parcourirTable.setAttribute('data-class','joueur1')
           setJoueur = true
         }else{
           parcourirTable.className = 'joueur2'
           parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
-          parcourirTable.setAttribute('data-joueur', this.joueurTab[i].arme = this.armeTab[5])
+          parcourirTable.setAttribute('data-arme', this.joueurTab[i].arme = arme.recupererNom(4))
           parcourirTable.setAttribute('data-class','joueur2')
         }
       }
