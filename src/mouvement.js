@@ -78,7 +78,7 @@ class Deplacement{
         let yKaseSuivanteJoueur = kaseSuivante.getAttribute('data-y')
         let PasObstacle = true
 
-
+        //vérfier qu'il n'y a pas  de case(s) noire(s)/un joueur entre la position actuelle du joueur et la nouvelle position du joueur
        for(let i = Math.min(xKaseActuelleJoueur, xKaseSuivanteJoueur); i <= Math.max(xKaseActuelleJoueur,xKaseSuivanteJoueur); i++){
 
             for(let j = Math.min(yKaseActuelleJoueur, yKaseSuivanteJoueur); j <= Math.max(yKaseActuelleJoueur,yKaseSuivanteJoueur); j++){
@@ -86,7 +86,8 @@ class Deplacement{
                 let kaseX = document.getElementById("td-" + yKaseActuelleJoueur + i)
                 let kaseY = document.getElementById("td-" + j + xKaseActuelleJoueur)
                 let joueur2Position = document.getElementById(joueur2.positionId)
-                
+
+        // si une case noire/joueur, empecher le joueur de se déplacer
                if (kaseX.getAttribute('data-case-nonaccessible')){
                 PasObstacle = false
                 console.log('saut impossible case x')
@@ -106,19 +107,20 @@ class Deplacement{
             
         }
         
+        // si pas de joueur/case(s) noires, permettre au joueur de se déplacer
         if(PasObstacle){
-        this.attributsJoueurAjour(kaseActuelle, kaseSuivante, joueur)
+        this.attributKaseAjour(kaseActuelle, kaseSuivante, joueur)
             }
         }
         
     //mettre à jour les attributs après déplacement
-    attributsJoueurAjour(kaseActuelle, kaseSuivante, joueur){
+    attributKaseAjour(kaseActuelle, kaseSuivante, joueur){
         
         //mettre à jour la nouvelle position du joueur
         kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
         kaseSuivante.setAttribute('data-joueur', joueur.nom)
         kaseSuivante.className = kaseActuelle.dataset.class
-            //si passe sur une case contenant une arme, mettre à jour l'arme du joueur
+            //si passe sur une case contenant une arme, récupérer l'arme et remplacer l'arme du joueur
             if(kaseSuivante.getAttribute('data-arme')){
             
             kaseSuivante.setAttribute('data-arme-ancienne',joueur.arme)
@@ -133,7 +135,7 @@ class Deplacement{
         kaseActuelle.removeAttribute('data-joueur')
         kaseActuelle.removeAttribute('class')
 
-            //depose l'arme du joueur
+            //deposer l'ancienne arme du joueur
             if(kaseActuelle.getAttribute('data-arme-ancienne')){
                 kaseActuelle.setAttribute('data-arme', kaseActuelle.getAttribute('data-arme-ancienne'))
                 kaseActuelle.className = kaseActuelle.getAttribute('data-arme-ancienne')
