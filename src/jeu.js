@@ -13,6 +13,7 @@ class Jeu {
      this.colonne = colonne;
      this.app = document.getElementById('app');
      this.joueurTab = [];
+     this.armeTab = [];
      this.arme = null;
       this.longueurGrille = this.ligne * this.colonne;
    }
@@ -89,11 +90,13 @@ class Jeu {
         if(!setJoueur){
           parcourirTable.className = 'joueur1'
           parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
+          parcourirTable.setAttribute('data-joueur', this.joueurTab[i].arme = this.armeTab[5])
           parcourirTable.setAttribute('data-class','joueur1')
           setJoueur = true
         }else{
           parcourirTable.className = 'joueur2'
           parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
+          parcourirTable.setAttribute('data-joueur', this.joueurTab[i].arme = this.armeTab[5])
           parcourirTable.setAttribute('data-class','joueur2')
         }
       }
