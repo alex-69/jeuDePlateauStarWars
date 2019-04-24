@@ -29,7 +29,7 @@ class Deplacement{
         return joueurTab 
     }
 
-    // vérifier toutes les cases disponibles autour du joueur
+    // vérifier toutes les cases indisponibles autour du joueur
 
     casesIndisponibles(kaseActuelle, kaseSuivante, joueur, joueur2){
 
@@ -46,8 +46,10 @@ class Deplacement{
             console.log('diag bloquée')
         }
             }
+
     //permettre les deplacement de 1 à 3 cases 
     Deplacement3cases(xkaseSuivante,ykaseSuivante, xkaseActuelle, ykaseActuelle,kaseActuelle, kaseSuivante, joueur, joueur2){
+
         //en ligne
         if((xkaseSuivante - xkaseActuelle <= 3) ^ (xkaseSuivante - xkaseActuelle <= -4)){
             //en colonne
@@ -62,6 +64,7 @@ class Deplacement{
     
     //empêcher déplacement sur : cases noires et joueurs
     casesBloquees(kaseActuelle, kaseSuivante, joueur, joueur2, xkaseActuelle,ykaseActuelle){
+
         if(kaseSuivante.id != kaseActuelle.id && !kaseSuivante.hasAttribute('data-joueur') && ! kaseSuivante.hasAttribute('data-case-nonaccessible')){
            this.bloquerSauts(kaseActuelle, kaseSuivante, joueur,joueur2, xkaseActuelle, ykaseActuelle)
         }else{
