@@ -1,5 +1,3 @@
-import{Joueur} from './joueurs'
-import{Jeu} from './jeu'
 
 class Deplacement{
 
@@ -15,7 +13,8 @@ class Deplacement{
             id = 'td-'
         }
         idCase = id +j
-        document.getElementById(idCase).classList.remove("chemin")
+        document.getElementById(idCase).classList.remove("cheminVador")
+        document.getElementById(idCase).classList.remove("cheminLuke")
         this.cheminPossibles(idCase, joueur, joueur2) 
 
         
@@ -162,12 +161,13 @@ class Deplacement{
                 this.cheminsJoueurPossibles(joueur, joueur2)
 
               }else{
-                kaseSuivante.classList.add('chemin')
-              }
-           
+                if(joueur2.nom == 'Vador'){
+                kaseSuivante.classList.add('cheminVador')
+                }else if(joueur2.nom == 'Luke')
+                 kaseSuivante.classList.add('cheminLuke')
+            }
         }
     }
-        
     //mettre à jour les attributs après déplacement
     attributKaseAjour(kaseActuelle, kaseSuivante, joueur){
         
