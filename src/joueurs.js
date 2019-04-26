@@ -65,7 +65,7 @@ class Joueur{
   }
 
 
-  quiPeutJouer()
+  quiPeutJouerAuDepart()
   {
     let aleatInt = null;
     for(let i = 0; i < 2; i++)
@@ -76,18 +76,6 @@ class Joueur{
     this.joueurTab[aleatInt].deplacer = true;
   }
 
-  recupererQuiPeutJouer()
-  {
-    for(let i = 0; i < 2; i++)
-    {
-      if(this.joueurTab[i].deplacer == true)
-      {
-        return this.joueurTab[i]
-      }
-    }
-
-    return null
-  }
 
 
   recupererJoueurTab(){

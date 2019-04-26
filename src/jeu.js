@@ -7,6 +7,8 @@ import{Joueur} from './joueurs'
 import{Deplacement} from './mouvement'
 
 
+
+
 class Jeu {
    constructor(ligne, colonne){
      this.ligne = ligne;
@@ -15,6 +17,7 @@ class Jeu {
      this.joueurTab = [];
      this.armeTab = [];
      this.arme = null;
+     
       this.longueurGrille = this.ligne * this.colonne;
    }
    creationGrille(){
@@ -24,10 +27,10 @@ class Jeu {
       let deplacement = new Deplacement()
       let joueur = new Joueur()
        //decide qui joue aléatoirement
-      joueur.quiPeutJouer();
+      joueur.quiPeutJouerAuDepart();
+  
       this.joueurTab = joueur.recupererJoueurTab()
-     
-      table.appendChild(body)
+       table.appendChild(body)
 
       for(let i = 0; i < this.ligne; i++){
 
@@ -38,21 +41,42 @@ class Jeu {
         td.setAttribute("data-x", j)
         td.setAttribute("data-y", i)
         td.id = "td-" + i+j
-
-        td.addEventListener('click', () => {
-          this.joueurTab = deplacement.deplacer(td.id, this.joueurTab)
+        
+        
+        td.addEventListener('click', event => { 
+       
+           deplacement.deplacer(td.id, this.joueurTab)
         })
+      
         tr.appendChild(td)
 
         }
       }
+
       this.app.appendChild(table)
       this.creerCaseNonAccess()
       this.creerArme()
       this.creerJoueur()
-      
-    
+      this.InitialiserCheminsJoueurPossibles()
    }
+  
+  
+  InitialiserCheminsJoueurPossibles(){
+    let deplacement = new Deplacement()
+    let kase = null
+    let id = null
+    for(let i = 0; i < this.longueurGrille; i++){
+      if(i<10){
+        id = 'td-0'
+      }else{
+        id = 'td-'
+      }
+      kase = id +i
+      deplacement.deplacer(kase, this.joueurTab) 
+    }
+  }
+  
+
   creerCaseNonAccess(){
     let tenueDeGrille = new TenueDeGrille(null, null, null, this.longueurGrille)
     let kase = null

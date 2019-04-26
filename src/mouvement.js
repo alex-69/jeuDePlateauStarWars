@@ -1,24 +1,45 @@
 import{Joueur} from './joueurs'
+import{Jeu} from './jeu'
 
 class Deplacement{
 
+    cheminsJoueurPossibles(joueur, joueur2){
+        
+        let id = null
+        let idCase = null
+       
+        for(let j = 0; j < 100; j++){
+        if(j<10){
+            id = 'td-0'
+        }else{
+            id = 'td-'
+        }
+        idCase = id +j
+        document.getElementById(idCase).classList.remove("chemin")
+        this.cheminPossibles(idCase, joueur, joueur2) 
+
+        
+        }
+    }
+
     deplacer(idCase, joueurTab){
 
-        let joueur = null
-        let joueur2 = null
+            let joueur = null
+            let joueur2 = null
         
-        for(let i = 0; i < joueurTab.length; i++){
-            if(joueurTab[i].deplacer == true)
-            {
-                joueur = joueurTab[i]
+            //selectionne joueur qui peut se déplacer
+            for(let i = 0; i < joueurTab.length; i++){
+                if(joueurTab[i].deplacer == true)
+                {
+                    joueur = joueurTab[i]
 
-            }else if(joueurTab[i].deplacer == false){
+                }else if(joueurTab[i].deplacer == false){
 
-                joueur2 = joueurTab[i]
+                    joueur2 = joueurTab[i]
+                }
             }
-        }
-        //case actuelle du joueur
-        let kaseActuelle = document.getElementById(joueur.positionId)
+            //case actuelle du joueur
+            let kaseActuelle = document.getElementById(joueur.positionId)
         
         //case ou le joueur doit aller
         let kaseSuivante = document.getElementById(idCase)
@@ -28,6 +49,23 @@ class Deplacement{
 
         return joueurTab 
     }
+
+    cheminPossibles(idCase, joueur, joueur2){
+
+     
+        //case actuelle du joueur
+        let kaseActuelle = document.getElementById(joueur2.positionId)
+    
+    //case ou le joueur doit aller
+        let kaseSuivante = document.getElementById(idCase)
+        
+
+        this.casesIndisponibles(kaseActuelle, kaseSuivante, joueur, joueur2)
+
+    
+       
+}
+    
 
     // vérifier toutes les cases indisponibles autour du joueur
 
@@ -88,8 +126,12 @@ class Deplacement{
 
                 let kaseX = document.getElementById("td-" + yKaseActuelleJoueur + i)
                 let kaseY = document.getElementById("td-" + j + xKaseActuelleJoueur)
-                let joueur2Position = document.getElementById(joueur2.positionId)
-
+                let joueur2Position = null
+                if(joueur.deplacer == true){
+                    joueur2Position = document.getElementById(joueur2.positionId)
+                }else{
+                    joueur2Position = document.getElementById(joueur.positionId)
+                }
         // si une case noire/joueur, empecher le joueur de se déplacer
                if (kaseX.getAttribute('data-case-nonaccessible')){
                 PasObstacle = false
@@ -112,9 +154,19 @@ class Deplacement{
         
         // si pas de joueur/case(s) noires, permettre au joueur de se déplacer
         if(PasObstacle){
-        this.attributKaseAjour(kaseActuelle, kaseSuivante, joueur)
-            }
+       
+              if(joueur.deplacer == true){  
+                this.attributKaseAjour(kaseActuelle, kaseSuivante, joueur)
+                joueur.deplacer = false
+                joueur2.deplacer = true
+                this.cheminsJoueurPossibles(joueur, joueur2)
+
+              }else{
+                kaseSuivante.classList.add('chemin')
+              }
+           
         }
+    }
         
     //mettre à jour les attributs après déplacement
     attributKaseAjour(kaseActuelle, kaseSuivante, joueur){
@@ -148,7 +200,11 @@ class Deplacement{
             }
         joueur.positionId = kaseSuivante.id
     }
+
+
 }
+
+
     
 
 
