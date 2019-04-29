@@ -37,10 +37,10 @@ class Jeu {
         let tr = document.createElement('tr')
         body.appendChild(tr)
         for(let j = 0; j < this.colonne; j++){
-        let td = document.createElement('td')
-        td.setAttribute("data-x", j)
-        td.setAttribute("data-y", i)
-        td.id = "td-" + i+j
+          let td = document.createElement('td')
+          td.setAttribute("data-x", j)
+          td.setAttribute("data-y", i)
+          td.id = "td-" + i+j
         
         
         td.addEventListener('click', event => { 
@@ -56,8 +56,9 @@ class Jeu {
       this.app.appendChild(table)
       this.creerCaseNonAccess()
       this.creerArme()
-      this.creerJoueur()
-      this.InitialiserCheminsJoueurPossibles()
+      this.creerJoueur() 
+      this.verifierPositionJoueur()
+      //this.InitialiserCheminsJoueurPossibles()
    }
   
   
@@ -103,30 +104,69 @@ class Jeu {
       
     }
   }
+
   creerJoueur(){
-      let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible','data-arme',null,this.longueurGrille)
-      let setJoueur = false
+    let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible','data-arme',null,this.longueurGrille)
+    let setJoueur = true
+    let kase = null
     
+        for(let i = 0; i < 2; i++){
 
-      for(let i = 0; i < 2; i++){
-        let parcourirTable = tenueDeGrille.parcourirTable()
-        this.joueurTab[i].positionId = parcourirTable.id
-        let arme = new Arme;
+          kase = tenueDeGrille.parcourirTable()
+          this.joueurTab[i].positionId = kase.id
+          let arme = new Arme;
 
-        if(!setJoueur){
-          parcourirTable.className = 'joueur1'
-          parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
-          parcourirTable.setAttribute('data-arme', this.joueurTab[i].arme = arme.recupererNom(5))
-          parcourirTable.setAttribute('data-class','joueur1')
-          setJoueur = true
-        }else{
-          parcourirTable.className = 'joueur2'
-          parcourirTable.setAttribute('data-joueur', this.joueurTab[i].nom)
-          parcourirTable.setAttribute('data-arme', this.joueurTab[i].arme = arme.recupererNom(4))
-          parcourirTable.setAttribute('data-class','joueur2')
+          if(setJoueur){
+            kase.className = 'joueur1'
+            kase.setAttribute('data-joueur', this.joueurTab[i].nom)
+            kase.setAttribute('data-arme', this.joueurTab[i].arme = arme.recupererNom(5))
+            kase.setAttribute('data-class','joueur1')
+            setJoueur = false
+          }else{
+            kase.className = 'joueur2'
+            kase.setAttribute('data-joueur', this.joueurTab[i].nom)
+            kase.setAttribute('data-arme', this.joueurTab[i].arme = arme.recupererNom(4))
+            kase.setAttribute('data-class','joueur2')
+          }
         }
-      }
+        this.verifierPositionJoueur()
+  
+  
   }
+
+  verifierPositionJoueur(){
+
+    
+    let PositionJoueur1 = this.joueurTab[0].positionId
+    let PositionJoueur2 = this.joueurTab[1].positionId
+    let idJoueur1 = document.getElementById(PositionJoueur1)
+    let idJoueur2 = document.getElementById(PositionJoueur2)
+     
+       if((idJoueur1.getAttribute('data-x') == idJoueur2.getAttribute('data-x')) ||(idJoueur1.getAttribute('data-y') == idJoueur2.getAttribute('data-y'))){
+           
+            idJoueur1.removeAttribute('data-arme')
+            idJoueur2.removeAttribute('data-arme')
+
+            idJoueur1.classList.remove('joueur1')
+            idJoueur2.classList.remove('joueur2')
+
+            idJoueur1.removeAttribute('data-joueur')
+            idJoueur2.removeAttribute('data-joueur')
+
+            idJoueur1.removeAttribute('data-class')
+            idJoueur2.removeAttribute('data-class')
+
+           this.creerJoueur()
+           
+          
+          }else{
+            this.InitialiserCheminsJoueurPossibles()
+          } 
+          
+  }
+      
+  
+  
 }
 
 export{Jeu}
