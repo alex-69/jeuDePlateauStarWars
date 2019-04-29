@@ -162,11 +162,16 @@ class Deplacement{
 
                 if(event && xKaseSuivanteJoueur - xPositionJoueur2 == -1 & yKaseSuivanteJoueur == yPositionJoueur2 ^ xKaseSuivanteJoueur - xPositionJoueur2 == +1 & yKaseSuivanteJoueur == yPositionJoueur2 ^ yKaseSuivanteJoueur - yPositionJoueur2 == -1 & xKaseSuivanteJoueur == xPositionJoueur2 ^ yKaseSuivanteJoueur - yPositionJoueur2 == +1 & xKaseSuivanteJoueur == xPositionJoueur2){
                     ///fight///
+
+                    //le joueur se déplace à coté de l'autre joueur
                     this.attributKaseAjour(kaseActuelle, kaseSuivante, joueur)
+
+                    //les déplacements sont bloqués
                     joueur.deplacer = false
+
+                    //supprimer chemin
                     let id = null
                     let idCase = null
-                   
                     for(let j = 0; j < 100; j++){
                     if(j<10){
                         id = 'td-0'
@@ -176,8 +181,10 @@ class Deplacement{
                     idCase = id +j
                     document.getElementById(idCase).classList.remove("cheminVador")
                     document.getElementById(idCase).classList.remove("cheminLuke")
-                    }
+                    }                    
+
                     alert('fight')
+                     ///fight///
                 }else{ 
                     this.attributKaseAjour(kaseActuelle, kaseSuivante, joueur)
                     joueur.deplacer = false

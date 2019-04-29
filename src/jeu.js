@@ -44,8 +44,12 @@ class Jeu {
         
         
         td.addEventListener('click', event => { 
-       
-           deplacement.deplacer(td.id, this.joueurTab)
+
+          if(this.joueurTab[0].deplacer == false && this.joueurTab[1].deplacer == false){
+           console.log('combat engagé')
+          }else{
+            deplacement.deplacer(td.id, this.joueurTab)
+          }
         })
       
         tr.appendChild(td)
