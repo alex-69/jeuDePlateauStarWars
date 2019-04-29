@@ -155,10 +155,35 @@ class Deplacement{
         if(PasObstacle){
        
               if(joueur.deplacer == true){  
-                this.attributKaseAjour(kaseActuelle, kaseSuivante, joueur)
-                joueur.deplacer = false
-                joueur2.deplacer = true
-                this.cheminsJoueurPossibles(joueur, joueur2)
+                  
+                  let idJoueur2 = document.getElementById(joueur2.positionId)
+                  let xPositionJoueur2 = idJoueur2.getAttribute('data-x')
+                  let yPositionJoueur2 = idJoueur2.getAttribute('data-y')
+
+                if(event && xKaseSuivanteJoueur - xPositionJoueur2 == -1 & yKaseSuivanteJoueur == yPositionJoueur2 ^ xKaseSuivanteJoueur - xPositionJoueur2 == +1 & yKaseSuivanteJoueur == yPositionJoueur2 ^ yKaseSuivanteJoueur - yPositionJoueur2 == -1 & xKaseSuivanteJoueur == xPositionJoueur2 ^ yKaseSuivanteJoueur - yPositionJoueur2 == +1 & xKaseSuivanteJoueur == xPositionJoueur2){
+                    ///fight///
+                    this.attributKaseAjour(kaseActuelle, kaseSuivante, joueur)
+                    joueur.deplacer = false
+                    let id = null
+                    let idCase = null
+                   
+                    for(let j = 0; j < 100; j++){
+                    if(j<10){
+                        id = 'td-0'
+                    }else{
+                        id = 'td-'
+                    }
+                    idCase = id +j
+                    document.getElementById(idCase).classList.remove("cheminVador")
+                    document.getElementById(idCase).classList.remove("cheminLuke")
+                    }
+                    alert('fight')
+                }else{ 
+                    this.attributKaseAjour(kaseActuelle, kaseSuivante, joueur)
+                    joueur.deplacer = false
+                    joueur2.deplacer = true
+                    this.cheminsJoueurPossibles(joueur, joueur2)
+                }
 
               }else{
                 if(joueur2.nom == 'Vador'){
