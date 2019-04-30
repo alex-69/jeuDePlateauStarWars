@@ -6,11 +6,11 @@ class Arme{
     this.armeTab = [
       {
         "nom": "Blaster",
-        "degats": 10
+        "degats": 5
       },
       {
         "nom": "Eclair",
-        "degats": 30
+        "degats": 20
       },
       {
         "nom": "SoldatClone",
@@ -22,11 +22,11 @@ class Arme{
       },
       {
         "nom": "SabreRouge",
-       "degats": 20
+       "degats": 10
       },
       {
         "nom": "SabreBleu",
-        "degats": 20
+        "degats": 10
       },
 
     ];
