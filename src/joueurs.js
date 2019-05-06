@@ -5,6 +5,8 @@ class Joueur{
     this.arme = null;
     this.deplacer = false;
     this.positionId = null;
+    this.combattre = false;
+    this.action = null;
     this.joueurTab = [
       {
         "id":0,
@@ -13,6 +15,8 @@ class Joueur{
         "arme": this.arme,
         "deplacer": this.deplacer,
         "positionId": this.positionId,
+        "combattre": this.combattre,
+        "action": this.action
       },
       {
         "id":1,
@@ -21,6 +25,7 @@ class Joueur{
         "arme": this.arme,
         "deplacer": this.deplacer,
         "positionId": this.positionId,
+        "combattre": this.combattre,
       }
     ]
   }
@@ -73,6 +78,16 @@ class Joueur{
        aleatInt = Math.floor(Math.random()*2)
     }
     
+    this.joueurTab[aleatInt].deplacer = true;
+  }
+
+  quiPeutCombattreAuDepart()
+  {
+    let aleatInt = null;
+    for(let i = 0; i < 2; i++)
+    {
+      aleatInt = Math.floor(Math.random()*2)
+    }
     this.joueurTab[aleatInt].deplacer = true;
   }
 

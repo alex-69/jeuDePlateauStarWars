@@ -77,7 +77,7 @@ class Deplacement{
         const ykaseActuelle = kaseActuelle.getAttribute('data-y')
 
         //bloquer les déplacements en diagonale
-        if((xkaseSuivante != xkaseActuelle && ykaseActuelle == ykaseSuivante)^(ykaseSuivante != ykaseActuelle && xkaseActuelle == xkaseSuivante)){
+        if((xkaseSuivante !== xkaseActuelle && ykaseActuelle == ykaseSuivante)^(ykaseSuivante != ykaseActuelle && xkaseActuelle == xkaseSuivante)){
                 this.Deplacement3cases(xkaseSuivante,ykaseSuivante, xkaseActuelle, ykaseActuelle,kaseActuelle, kaseSuivante, joueur, joueur2)
         }else{
             console.log('diag bloquée')

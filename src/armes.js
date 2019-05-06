@@ -32,7 +32,7 @@ class Arme{
     ];
   }
 
-  selectionneArme()
+  recupererArme()
   {
     return this.armeTab
   }

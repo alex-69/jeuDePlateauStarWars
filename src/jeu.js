@@ -5,7 +5,7 @@ import{TenueDeGrille} from './tenueDeGrille'
 import{Arme} from './armes'
 import{Joueur} from './joueurs'
 import{Deplacement} from './mouvement'
-
+import{Combat} from './combat'
 
 
 
@@ -16,7 +16,7 @@ class Jeu {
      this.app = document.getElementById('app');
      this.joueurTab = [];
      this.armeTab = [];
-     this.arme = null;
+     
      
       this.longueurGrille = this.ligne * this.colonne;
    }
@@ -26,10 +26,13 @@ class Jeu {
       let body = document.createElement('tbody')
       let deplacement = new Deplacement()
       let joueur = new Joueur()
+      
        //decide qui joue aléatoirement
       joueur.quiPeutJouerAuDepart();
+      joueur.quiPeutCombattreAuDepart();
   
       this.joueurTab = joueur.recupererJoueurTab()
+     
        table.appendChild(body)
 
       for(let i = 0; i < this.ligne; i++){
@@ -62,10 +65,23 @@ class Jeu {
       this.creerArme()
       this.creerJoueur() 
       this.verifierPositionJoueur()
+      this.engagerCombat
       //this.InitialiserCheminsJoueurPossibles()
    }
   
-  
+  engagerCombat(){
+    let joueur = new Joueur()
+    let arme = new Arme()
+    let combat = new Combat()
+    this.joueurTab = joueur.recupererJoueurTab()
+    this.armeTab = arme.recupererArme()
+    let idBouton = document.getElementsByTagName("button")
+
+    idBouton.addEventListener('click', event => {
+
+      combat.combattre(idBouton, this.joueurTab, this.armeTab)
+    })
+  }
   InitialiserCheminsJoueurPossibles(){
     let deplacement = new Deplacement()
     let kase = null
