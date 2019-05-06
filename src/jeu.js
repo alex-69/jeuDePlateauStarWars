@@ -66,7 +66,7 @@ class Jeu {
       this.creerJoueur() 
       this.verifierPositionJoueur()
       this.engagerCombat
-      //this.InitialiserCheminsJoueurPossibles()
+     
    }
   
   engagerCombat(){
