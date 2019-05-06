@@ -64,12 +64,11 @@ class Jeu {
       this.creerCaseNonAccess()
       this.creerArme()
       this.creerJoueur() 
-      this.verifierPositionJoueur()
-      this.engagerCombat
+      
      
    }
   
-  engagerCombat(){
+ /* engagerCombat(){
     let joueur = new Joueur()
     let arme = new Arme()
     let combat = new Combat()
@@ -81,7 +80,7 @@ class Jeu {
 
       combat.combattre(idBouton, this.joueurTab, this.armeTab)
     })
-  }
+  }*/
   InitialiserCheminsJoueurPossibles(){
     let deplacement = new Deplacement()
     let kase = null
@@ -149,7 +148,7 @@ class Jeu {
             kase.setAttribute('data-class','joueur2')
           }
         }
-        this.verifierPositionJoueur()
+        //this.verifierPositionJoueur()
   
   
   }

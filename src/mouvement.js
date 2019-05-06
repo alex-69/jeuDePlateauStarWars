@@ -126,6 +126,7 @@ class Deplacement{
                 let kaseX = document.getElementById("td-" + yKaseActuelleJoueur + i)
                 let kaseY = document.getElementById("td-" + j + xKaseActuelleJoueur)
                 let joueur2Position = null
+                
                 if(joueur.deplacer == true){
                     joueur2Position = document.getElementById(joueur2.positionId)
                 }else{
@@ -135,7 +136,7 @@ class Deplacement{
                if (kaseX.getAttribute('data-case-nonaccessible')){
                 PasObstacle = false
                 console.log('saut impossible case x')
-               }else if(kaseX === joueur2Position){
+               }else if(kaseX == joueur2Position){
                 PasObstacle = false
                 console.log('saut impossible case joueur x')
                }
