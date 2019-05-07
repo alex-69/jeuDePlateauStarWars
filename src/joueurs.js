@@ -6,7 +6,7 @@ class Joueur{
     this.deplacer = false;
     this.positionId = null;
     this.combattre = false;
-    this.action = null;
+    this.action = "attaquer";
     this.joueurTab = [
       {
         "id":0,
@@ -26,6 +26,7 @@ class Joueur{
         "deplacer": this.deplacer,
         "positionId": this.positionId,
         "combattre": this.combattre,
+        "action": this.action
       }
     ]
   }
@@ -88,7 +89,7 @@ class Joueur{
     {
       aleatInt = Math.floor(Math.random()*2)
     }
-    this.joueurTab[aleatInt].deplacer = true;
+    this.joueurTab[aleatInt].combattre = true;
   }
 
 

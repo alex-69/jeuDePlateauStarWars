@@ -25,14 +25,16 @@ class Jeu {
       let table = document.createElement('table')
       let body = document.createElement('tbody')
       let deplacement = new Deplacement()
+      let combat = new Combat()
       let joueur = new Joueur()
+      let arme = new Arme()
       
        //decide qui joue aléatoirement
       joueur.quiPeutJouerAuDepart();
       joueur.quiPeutCombattreAuDepart();
   
       this.joueurTab = joueur.recupererJoueurTab()
-     
+      this.armeTab = arme.recupererArme()
        table.appendChild(body)
 
       for(let i = 0; i < this.ligne; i++){
@@ -45,7 +47,8 @@ class Jeu {
           td.setAttribute("data-y", i)
           td.id = "td-" + i+j
         
-        
+  
+          //console.log(idBouton)
         td.addEventListener('click', event => { 
 
           if(this.joueurTab[0].deplacer == false && this.joueurTab[1].deplacer == false){
@@ -54,33 +57,34 @@ class Jeu {
             deplacement.deplacer(td.id, this.joueurTab)
           }
         })
-      
+
         tr.appendChild(td)
 
         }
       }
+      let bouttonAttaquer = document.getElementById('attaquer')
+        let bouttonDefendre = document.getElementById('défendre')
+
+        bouttonAttaquer.addEventListener('click', event => {
+
+          combat.combattre(bouttonAttaquer, this.joueurTab, this.armeTab)
+        })
+        
+        bouttonDefendre.addEventListener('click', event => {
+
+          combat.combattre(bouttonDefendre, this.joueurTab, this.armeTab)
+        })
 
       this.app.appendChild(table)
       this.creerCaseNonAccess()
       this.creerArme()
-      this.creerJoueur() 
+      this.creerJoueur()
+      
       
      
    }
   
- /* engagerCombat(){
-    let joueur = new Joueur()
-    let arme = new Arme()
-    let combat = new Combat()
-    this.joueurTab = joueur.recupererJoueurTab()
-    this.armeTab = arme.recupererArme()
-    let idBouton = document.getElementsByTagName("button")
-
-    idBouton.addEventListener('click', event => {
-
-      combat.combattre(idBouton, this.joueurTab, this.armeTab)
-    })
-  }*/
+ 
   InitialiserCheminsJoueurPossibles(){
     let deplacement = new Deplacement()
     let kase = null
@@ -148,7 +152,7 @@ class Jeu {
             kase.setAttribute('data-class','joueur2')
           }
         }
-        //this.verifierPositionJoueur()
+        this.verifierPositionJoueur()
   
   
   }
