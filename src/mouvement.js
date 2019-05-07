@@ -161,7 +161,8 @@ class Deplacement{
                   let xPositionJoueur2 = idJoueur2.getAttribute('data-x')
                   let yPositionJoueur2 = idJoueur2.getAttribute('data-y')
 
-                if(event && xKaseSuivanteJoueur - xPositionJoueur2 == -1 & yKaseSuivanteJoueur == yPositionJoueur2 ^ xKaseSuivanteJoueur - xPositionJoueur2 == +1 & yKaseSuivanteJoueur == yPositionJoueur2 ^ yKaseSuivanteJoueur - yPositionJoueur2 == -1 & xKaseSuivanteJoueur == xPositionJoueur2 ^ yKaseSuivanteJoueur - yPositionJoueur2 == +1 & xKaseSuivanteJoueur == xPositionJoueur2){
+                if(event & xPositionJoueur2 - xKaseSuivanteJoueur == 1 & yKaseSuivanteJoueur == yPositionJoueur2 || xKaseSuivanteJoueur - xPositionJoueur2 == 1 & yKaseSuivanteJoueur == yPositionJoueur2 || yPositionJoueur2 - yKaseSuivanteJoueur == 1 & xKaseSuivanteJoueur == xPositionJoueur2 || yKaseSuivanteJoueur - yPositionJoueur2 == 1 & xKaseSuivanteJoueur == xPositionJoueur2){
+                    
                     ///fight///
 
                     //le joueur se déplace à coté de l'autre joueur
@@ -236,9 +237,6 @@ class Deplacement{
 
 
 }
-
-
-    
 
 
 export{Deplacement}
