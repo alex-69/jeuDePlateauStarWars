@@ -15,53 +15,64 @@ class Combat{
                 joueur1 = joueurTab[i]
                 
 
-            }else if (joueurTab[i].combattre == true){
+            }else if (joueurTab[i].combattre == false){
 
                 joueur2 = joueurTab[i]
+                console.log(joueur2.action)
             }
         }
 
         for (let i = 0; i < armeTab.length; i++){
 
-            if(joueur1.arme = armeTab[i].nom){
+            if(joueur1.arme == armeTab[i].nom){
                 armeDegat = armeTab[i].degats
-            }else{
-                console/log("pas d'arme")
+                console.log(armeDegat)
+               
             }
         }
-        
-        let AttaquerOuDefendre = document.getElementById(idBouton)
-
-        switch(AttaquerOuDefendre.id){
-            case "attaquer":
-            
-                if(joueur2.action = "defendre"){
-                    joueur2.force = this.force - (armeDegat/2)
+      
+        //le joueur attaque
+        if(idBouton.id == "attaquer"){
+           
+                if(joueur2.action == "defendre" ){
+                    joueur2.force = joueur2.force - (armeDegat/2)
+                  
                     if(joueur2.force > 0){
                         joueur1.combattre = false
                         joueur2.combattre = true
+                        joueur1.action = "attaquer" 
+                        
                     }else{
-                        alert("combat terminé")
+                        alert(joueur2.nom + ' est mort')
                     }
-                }else{
-                    joueur2.force = this.force - armeDegat
+
+                }else if (joueur2.action == "attaquer"){
+
+                    joueur2.force = joueur2.force - armeDegat
+                    console.log(joueur2.force)
+                    console.log(joueur2.nom)
+
                     if(joueur2.force > 0){
+
                         joueur1.combattre = false
                         joueur2.combattre = true
+                        joueur1.action = "attaquer" 
+                        
+
                     }else{
-                        alert("combat terminé")
+                        alert(joueur2.nom + ' est mort')
                     }
                 }
-                joueur1.action = "attaquer"
-            break;
-
-            case "defendre":
+                
+        //Le joueur se défend
+        }else if (idBouton.id == "défendre"){
 
                 joueur1.action = "defendre" 
-            break;       
-        }
+                joueur1.combattre = false
+                joueur2.combattre = true
 
-        
+        }
+    
     }
 }
 
