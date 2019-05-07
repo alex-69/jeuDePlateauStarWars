@@ -46,8 +46,7 @@ class Jeu {
           td.setAttribute("data-x", j)
           td.setAttribute("data-y", i)
           td.id = "td-" + i+j
-        
-  
+          
           //console.log(idBouton)
         td.addEventListener('click', event => { 
 
@@ -79,28 +78,30 @@ class Jeu {
       this.creerCaseNonAccess()
       this.creerArme()
       this.creerJoueur()
-      
+      this.creerCheminJoueur()
       
      
-   }
-  
- 
-  InitialiserCheminsJoueurPossibles(){
-    let deplacement = new Deplacement()
-    let kase = null
-    let id = null
-    for(let i = 0; i < this.longueurGrille; i++){
-      if(i<10){
-        id = 'td-0'
-      }else{
-        id = 'td-'
-      }
-      kase = id +i
-      deplacement.deplacer(kase, this.joueurTab) 
-    }
-  }
-  
+   } 
 
+  creerCheminJoueur(){
+
+    let deplacement = new Deplacement()
+    let joueur = null
+    let joueur2 = null
+
+    for(let i = 0; i < this.joueurTab.length; i++){
+        if(this.joueurTab[i].deplacer == true)
+        {
+            joueur2 = this.joueurTab[i]
+
+        }else if(this.joueurTab[i].deplacer == false){
+
+            joueur = this.joueurTab[i]
+        }
+    }
+  deplacement.cheminsJoueurPossibles(joueur, joueur2)
+
+  }
   creerCaseNonAccess(){
     let tenueDeGrille = new TenueDeGrille(null, null, null, this.longueurGrille)
     let kase = null
@@ -129,12 +130,13 @@ class Jeu {
   }
 
   creerJoueur(){
-    let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible','data-arme',null,this.longueurGrille)
+
+
     let setJoueur = true
     let kase = null
-    
-        for(let i = 0; i < 2; i++){
+    let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible','data-arme',null,this.longueurGrille)
 
+        for(let i = 0; i < 2; i++){
           kase = tenueDeGrille.parcourirTable()
           this.joueurTab[i].positionId = kase.id
           let arme = new Arme;
@@ -152,20 +154,13 @@ class Jeu {
             kase.setAttribute('data-class','joueur2')
           }
         }
-        this.verifierPositionJoueur()
-  
-  
-  }
 
-  verifierPositionJoueur(){
+        let PositionJoueur1 = this.joueurTab[0].positionId
+        let PositionJoueur2 = this.joueurTab[1].positionId
+        let idJoueur1 = document.getElementById(PositionJoueur1)
+        let idJoueur2 = document.getElementById(PositionJoueur2)
 
-    
-    let PositionJoueur1 = this.joueurTab[0].positionId
-    let PositionJoueur2 = this.joueurTab[1].positionId
-    let idJoueur1 = document.getElementById(PositionJoueur1)
-    let idJoueur2 = document.getElementById(PositionJoueur2)
-     
-       if((idJoueur1.getAttribute('data-x') == idJoueur2.getAttribute('data-x')) ||(idJoueur1.getAttribute('data-y') == idJoueur2.getAttribute('data-y'))){
+       if((idJoueur1.getAttribute('data-x') == idJoueur2.getAttribute('data-x')) || (idJoueur1.getAttribute('data-y') == idJoueur2.getAttribute('data-y'))){
            
             idJoueur1.removeAttribute('data-arme')
             idJoueur2.removeAttribute('data-arme')
@@ -180,14 +175,11 @@ class Jeu {
             idJoueur2.removeAttribute('data-class')
 
            this.creerJoueur()
-           
-          
-          }else{
-            this.InitialiserCheminsJoueurPossibles()
-          } 
-          
+                    
+          }
+       
   }
-      
+     
   
   
 }
