@@ -1,66 +1,189 @@
 
-
-  h1 {
-    text-align: center;
-    width: auto;
-    height: auto;
-    font-size: 1.2em;
-    vertical-align: middle;
-    z-index: 5;
-    color: white;
+  body{
+    background: url('images/fond_ecran_starwarsjpg.jpg')
+  }
+  
+  #bloc_page
+  {
+      margin: auto;
+      width: 700px; 
+      display: flex;  
+      font-family: Verdana, Geneva, Tahoma, sans-serif; 
   }
 
-  body
-{
-    margin: 0;
-    padding: 0;
+  #bloc-info-general
+  {
+    margin-top: -30px;
+    margin-left: 20px;
+  }
+
+  .bouton-bloc
+  {
+    display: flex;
+    justify-content: center;
+  }
+  #app{
+    
+    width: 600px;
+  } 
+  
+  header 
+  {
+    text-align: center;
+    color: yellow;
+  }
+ #vador-nom img{
+    width: 60px;
+    height: 60px;
+    position: relative;
+    left: 90;
+    top: -20;
+  }
+
+  #luke-nom img{
+    width: 60px;
+    height: 60px;
+    position: relative;
+    left: 30;
+    top: -30;
+  }
+
+  #image-arme-vador{
+    background-size: 100% 100%;
+    height: 50px;
+    width: 50px;
+    margin: auto;
+  }
+  #image-arme-luke{
+    background-size: 100% 100%;
+    height: 50px;
+    width: 50px;
+    margin: auto;
+  }
+
+  img{
+    width: 50px;
+    height: 50px;
+  }
+
+  button{
+    display: none;
+    visibility: hidden;
+  }
+
+ .bloc-info button{
+    border-radius: 10px;
+    opacity: 1;
+    color: white;
+    margin-left: 10;
+    margin-right: 10px;
+    height: 46px;
+    width: 83px;
+}
+
+.bloc-info button p{
+  font-size: 12px;
+  font-weight: 700;
+}
+
+  .bouton-vador{
+    background-color: red;
+
+ 
+  }
+ .bouton-luke{
+   background-color: rgb(38, 176, 255);
+
+ }
+  h2 {
+    text-align: center;
+    color: white;
+    font-size:20px;
+    display: flex;
+    margin-bottom: -2px;
+  }
+  .bloc-info p {
+    text-align: center;
+  }
+  #luke-nom{
+    color:rgb(38, 176, 255);
+  }
+  #vador-nom{
+    color: red;
+  }
+
+.bloc-info {
+  background-color: aliceblue;
+  opacity: 0.8;
+  border-radius: 5px;
+  width: 300px;
+  padding: 15px 0px 3px 15px;
+  margin-top: 10px;
 }
 
 table td{
-    padding: 20px;
+    padding: 25px;
     border: 1px solid black;
-}
+    background-color: aliceblue;
+    opacity: 0.8;
+    border-radius: 3px;
 
-table{
-    margin: auto;
-    margin-top: 10%;
-}
+}  
+
 
 .SabreRouge{
   background-image: url('./images/SabreRouge.png');
   background-size: 100% 100%;
+  opacity: inherit;
 }
 .SabreBleu{
   background-image: url('./images/SabreBleu.png');
   background-size: 100% 100%;
+  opacity: inherit;
 }
 
 .Blaster{
   background-image: url('./images/Blaster.png');
   background-size: 100% 100%;
+  opacity: inherit;
 }
 
 .Eclair{
   background-image: url('./images/Eclair.png');
   background-size: 100% 100%;
+  opacity: inherit;
 }
 
 .R2d2{
   background-image: url('./images/R2d2.png');
   background-size: 100% 100%;
+  opacity: inherit;
 }
 
 .SoldatClone{
   background-image: url('./images/SoldatClone.png');
   background-size: 100% 100%;
+  opacity: inherit;
 }
 
 .joueur1{
   background-image: url('./images/perso1_luke.png');
   background-size: 100% 100%;
+  opacity: inherit;
 }
 
 .joueur2{
-  background-size: url('./images/perso2_vador.png');
+  background-image: url('./images/perso2_vador.png');
   background-size: 100% 100%;
+  opacity: inherit;
+}
+
+.cheminVador{
+  background-color: red;
+  opacity: inherit;
+}
+
+.cheminLuke{
+  background-color:rgb(38, 176, 255);
+  opacity: inherit;
 }

@@ -1,10 +1,12 @@
 class Joueur{
   constructor(){
-    this.Nom = null;
+    this.nom = null;
     this.force = 100;
     this.arme = null;
     this.deplacer = false;
     this.positionId = null;
+    this.combattre = false;
+    this.action = "attaquer";
     this.joueurTab = [
       {
         "id":0,
@@ -13,14 +15,18 @@ class Joueur{
         "arme": this.arme,
         "deplacer": this.deplacer,
         "positionId": this.positionId,
+        "combattre": this.combattre,
+        "action": this.action
       },
       {
         "id":1,
-        "non":"Vador",
+        "nom":"Vador",
         "force":this.force,
         "arme": this.arme,
         "deplacer": this.deplacer,
         "positionId": this.positionId,
+        "combattre": this.combattre,
+        "action": this.action
       }
     ]
   }
@@ -65,45 +71,36 @@ class Joueur{
   }
 
 
-  quiPeutJouer()
+  quiPeutJouerAuDepart()
   {
     let aleatInt = null;
     for(let i = 0; i < 2; i++)
     {
        aleatInt = Math.floor(Math.random()*2)
     }
-    this.joueurTab[aleatInt].move = true;
+    
+    this.joueurTab[aleatInt].deplacer = true;
   }
 
-  recupererQuiPeutJouer()
+  quiPeutCombattreAuDepart()
   {
+    let aleatInt = null;
     for(let i = 0; i < 2; i++)
     {
-      if(this.joueurTab[i].move == true)
-      {
-        return this.joueurTab[i]
-      }
+      aleatInt = Math.floor(Math.random()*2)
     }
+    this.joueurTab[aleatInt].combattre = true;
 
-    return null
+    if(this.joueurTab[aleatInt].nom == 'Luke'){
+      $('#attaquer-luke').css('visibility', 'visible')
+      $('#défendre-luke').css('visibility', 'visible')
+    }else if (this.joueurTab[aleatInt].nom == 'Vador'){
+      $('#attaquer-vador').css('visibility', 'visible')
+      $('#défendre-vador').css('visibility', 'visible')
+    }
   }
 
-  permettreDeplacementJoueur(joueurs, joueur)
-  {
-    joueur.compterDeplacement = 0
-    if(joueurs[0] == true){
-      joueurs[0] == false
-      joueurs[1] == true
-      console.log(joueur[1])
-    }else if (joueurs[1] == true){
-      joueurs[1] == false
-      joueurs[0] == true
-      console.log(joueur[0])
-    }
-    console.log(joueurs)
-    return joueurs
-    
-  }
+
 
   recupererJoueurTab(){
     return this.joueurTab
