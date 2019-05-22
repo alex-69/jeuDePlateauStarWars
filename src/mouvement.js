@@ -1,4 +1,7 @@
 
+import{Arme} from './armes'
+
+
 class Deplacement{
 
     cheminsJoueurPossibles(joueur, joueur2){
@@ -182,7 +185,9 @@ class Deplacement{
                     idCase = id +j
                     document.getElementById(idCase).classList.remove("cheminVador")
                     document.getElementById(idCase).classList.remove("cheminLuke")
-                    }                    
+                    }
+                    $('button').css('display', 'block')
+                        
 
                     alert('fight')
                      ///fight///
@@ -210,13 +215,43 @@ class Deplacement{
         kaseSuivante.className = kaseActuelle.dataset.class
             //si passe sur une case contenant une arme, récupérer l'arme et remplacer l'arme du joueur
             if(kaseSuivante.getAttribute('data-arme')){
-            
-            kaseSuivante.setAttribute('data-arme-ancienne',joueur.arme)
-            kaseSuivante.setAttribute('data-arme', joueur.arme = kaseSuivante.getAttribute('data-arme'))
-            }else{
-            kaseSuivante.setAttribute('data-arme', joueur.arme)
-            }
         
+                kaseSuivante.setAttribute('data-arme-ancienne',joueur.arme)
+                kaseSuivante.setAttribute('data-arme', joueur.arme = kaseSuivante.getAttribute('data-arme'))
+                let arme = new Arme()
+                let armeTab = arme.recupererArme()
+
+                if(joueur.nom == 'Luke'){
+                    if(kaseSuivante.getAttribute('data-arme') != kaseActuelle.getAttribute('data-arme')){
+
+                        for (let i = 0; i < armeTab.length; i++){
+                            if(armeTab[i].nom == kaseSuivante.getAttribute('data-arme')){
+                                $('#arme-luke').text(kaseSuivante.getAttribute('data-arme')+ ': ' + armeTab[i].degats + ' points de dégats')
+                            }
+                        }
+                        $('#image-arme-luke').addClass(kaseSuivante.getAttribute('data-arme'))
+                        $('#image-arme-luke').removeClass(kaseActuelle.getAttribute('data-arme'))
+                        }
+                
+                }else if(joueur.nom == 'Vador'){
+                    if(kaseSuivante.getAttribute('data-arme') != kaseActuelle.getAttribute('data-arme')){
+                        
+                        for (let i = 0; i < armeTab.length; i++){
+                            if(armeTab[i].nom == kaseSuivante.getAttribute('data-arme')){
+                                $('#arme-vador').text(kaseSuivante.getAttribute('data-arme')+ ': ' + armeTab[i].degats + ' points de dégats')
+                            }
+                        }
+
+                        $('#image-arme-vador').addClass(kaseSuivante.getAttribute('data-arme'))
+                        $('#image-arme-vador').removeClass(kaseActuelle.getAttribute('data-arme'))
+                    }
+                }
+            }else{
+                kaseSuivante.setAttribute('data-arme', joueur.arme)
+                
+            }
+            
+            
         //supprimer l'ancienne position du joueur
         kaseActuelle.classList.remove(kaseActuelle.dataset.class)
         kaseActuelle.removeAttribute('data-class')
