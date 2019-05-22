@@ -90,6 +90,14 @@ class Joueur{
       aleatInt = Math.floor(Math.random()*2)
     }
     this.joueurTab[aleatInt].combattre = true;
+
+    if(this.joueurTab[aleatInt].nom == 'Luke'){
+      $('#attaquer-luke').css('visibility', 'visible')
+      $('#défendre-luke').css('visibility', 'visible')
+    }else if (this.joueurTab[aleatInt].nom == 'Vador'){
+      $('#attaquer-vador').css('visibility', 'visible')
+      $('#défendre-vador').css('visibility', 'visible')
+    }
   }
 
 
