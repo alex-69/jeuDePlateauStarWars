@@ -8,18 +8,48 @@
      <link rel="stylesheet" type="text/css" media="screen" href="main.css"> 
 </head>
 <body>
-    <header>
-      <h1>Jeu en tour par tour Star Wars</br> les rebelles vs l'empire</h1>
-    </header>
-      <div>
-        <button id = "attaquer">
-          <p>attaquer</p>
-        </button>
-        <button id = "défendre">
-          <p>défendre</p>
-        </button>
-      </div>
-      <div id="app"></div>
+  <header>
+        <h1>Jeu Star Wars</br> les rebelles vs l'empire</h1>
+  </header>
+  <div id = "bloc_page">
+    <div id="app"></div>
+
+  
+        <div id= "bloc-info-general">
+
+          <div class = "bloc-info">
+            <h2 id = "luke-nom">Luke Skywalker <br /><img src="images/perso1_luke.png"/></h2>
+            <div class= "bouton-bloc">
+              <button id = "attaquer-luke" class= "bouton-luke">
+                <p>Attaquer</p>
+              </button>
+                <button id = "défendre-luke" class= "bouton-luke">
+                <p>Défendre</p>
+              </button>
+            </div>
+            <p id="vie-luke">100 points de vie</p>
+            <div id = "image-arme-luke"></div>
+            <p id="arme-luke">Sabre laser: 10 points de dégat</p>
+          </div>
+
+          <div class = "bloc-info">
+            <h2 id = "vador-nom">Dark Vador<br /><img src="images/perso2_vador.png"/></h2>
+            <div class= "bouton-bloc">
+              <button id = "attaquer-vador" class= "bouton-vador">
+                <p>Attaquer</p>
+              </button>
+              <button id = "défendre-vador" class= "bouton-vador">
+                <p>Défendre</p>
+              </button>
+            </div>
+            <p id = "vie-vador">100 points de vie</p>
+            <div id = "image-arme-vador"></div>
+           <p id ="arme-vador">Sabre laser: 10 points de dégat</p>
+          
+        </div>
+    </div>
+
+  </div>
       
     <script src="bundle.js"></script> 
 
