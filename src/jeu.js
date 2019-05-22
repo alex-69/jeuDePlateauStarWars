@@ -28,11 +28,9 @@ class Jeu {
       let combat = new Combat()
       let joueur = new Joueur()
       let arme = new Arme()
-      
        //decide qui joue aléatoirement
-      joueur.quiPeutJouerAuDepart();
-      joueur.quiPeutCombattreAuDepart();
-  
+      joueur.quiPeutJouerAuDepart()
+      joueur.quiPeutCombattreAuDepart()
       this.joueurTab = joueur.recupererJoueurTab()
       this.armeTab = arme.recupererArme()
        table.appendChild(body)
@@ -49,9 +47,7 @@ class Jeu {
           
           //console.log(idBouton)
         td.addEventListener('click', event => { 
-
           if(this.joueurTab[0].deplacer == false && this.joueurTab[1].deplacer == false){
-           console.log('combat engagé')
           }else{
             deplacement.deplacer(td.id, this.joueurTab)
           }
@@ -61,17 +57,27 @@ class Jeu {
 
         }
       }
-      let bouttonAttaquer = document.getElementById('attaquer')
-        let bouttonDefendre = document.getElementById('défendre')
+        let attaquerLuke = document.getElementById('attaquer-luke')
+        let defendreLuke = document.getElementById('défendre-luke')
+        let attaquerVador = document.getElementById('attaquer-vador')
+        let defendreVador = document.getElementById('défendre-vador')
 
-        bouttonAttaquer.addEventListener('click', event => {
+        attaquerLuke.addEventListener('click', event => {
 
-          combat.combattre(bouttonAttaquer, this.joueurTab, this.armeTab)
+          combat.combattre(attaquerLuke, this.joueurTab, this.armeTab)
+        })
+        attaquerVador.addEventListener('click', event => {
+
+          combat.combattre(attaquerVador, this.joueurTab, this.armeTab)
         })
         
-        bouttonDefendre.addEventListener('click', event => {
+        defendreLuke.addEventListener('click', event => {
 
-          combat.combattre(bouttonDefendre, this.joueurTab, this.armeTab)
+          combat.combattre(defendreLuke, this.joueurTab, this.armeTab)
+        })
+        defendreVador.addEventListener('click', event => {
+
+          combat.combattre(defendreLuke, this.joueurTab, this.armeTab)
         })
 
       this.app.appendChild(table)
@@ -100,8 +106,8 @@ class Jeu {
         }
     }
   deplacement.cheminsJoueurPossibles(joueur, joueur2)
-
   }
+
   creerCaseNonAccess(){
     let tenueDeGrille = new TenueDeGrille(null, null, null, this.longueurGrille)
     let kase = null
@@ -117,7 +123,7 @@ class Jeu {
     let kase = null
     let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible', null, null, this.longueurGrille)
     let arme = new Arme()
-
+   
     for(let i = 0; i < 10; i++){
       armeAleatInt = Math.floor(Math.random() * 5)
       kase = tenueDeGrille.parcourirTable()
@@ -145,14 +151,16 @@ class Jeu {
             kase.className = 'joueur1'
             kase.setAttribute('data-joueur', this.joueurTab[i].nom)
             kase.setAttribute('data-arme', this.joueurTab[i].arme = arme.recupererNom(5))
+            $('#image-arme-luke').addClass(arme.recupererNom(5))
             kase.setAttribute('data-class','joueur1')
             setJoueur = false
           }else{
             kase.className = 'joueur2'
             kase.setAttribute('data-joueur', this.joueurTab[i].nom)
             kase.setAttribute('data-arme', this.joueurTab[i].arme = arme.recupererNom(4))
+            $('#image-arme-vador').addClass(arme.recupererNom(4))
             kase.setAttribute('data-class','joueur2')
-          }
+          } 
         }
 
         let PositionJoueur1 = this.joueurTab[0].positionId
