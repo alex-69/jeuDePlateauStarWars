@@ -79,14 +79,12 @@ class Deplacement{
 
         //bloquer les déplacements en diagonale
         if((xkaseSuivante !== xkaseActuelle && ykaseActuelle == ykaseSuivante)^(ykaseSuivante != ykaseActuelle && xkaseActuelle == xkaseSuivante)){
-                this.Deplacement3cases(xkaseSuivante,ykaseSuivante, xkaseActuelle, ykaseActuelle,kaseActuelle, kaseSuivante, joueur, joueur2)
-        }else{
-            console.log('diag bloquée')
+                this.DeplacementTroiscases(xkaseSuivante,ykaseSuivante, xkaseActuelle, ykaseActuelle,kaseActuelle, kaseSuivante, joueur, joueur2)
         }
             }
 
     //permettre les deplacement de 1 à 3 cases 
-    Deplacement3cases(xkaseSuivante,ykaseSuivante, xkaseActuelle, ykaseActuelle,kaseActuelle, kaseSuivante, joueur, joueur2){
+    DeplacementTroiscases(xkaseSuivante,ykaseSuivante, xkaseActuelle, ykaseActuelle,kaseActuelle, kaseSuivante, joueur, joueur2){
 
         //en ligne
         if((xkaseSuivante - xkaseActuelle <= 3) ^ (xkaseSuivante - xkaseActuelle <= -4)){
@@ -95,9 +93,7 @@ class Deplacement{
                 
                 this.casesBloquees(kaseActuelle, kaseSuivante, joueur, joueur2)
             }    
-        }else{
-            console.log('plus de 3 cases')
-        }  
+        }
     }
     
     //empêcher déplacement sur : cases noires et joueurs
@@ -105,8 +101,6 @@ class Deplacement{
 
         if(kaseSuivante.id != kaseActuelle.id && !kaseSuivante.hasAttribute('data-joueur') && ! kaseSuivante.hasAttribute('data-case-nonaccessible')){
            this.bloquerSauts(kaseActuelle, kaseSuivante, joueur,joueur2, xkaseActuelle, ykaseActuelle)
-        }else{
-            console.log('cases bloquées')
         }
     }
 
@@ -129,25 +123,30 @@ class Deplacement{
                 let joueur2Position = null
                 
                 if(joueur.deplacer == true){
+
                     joueur2Position = document.getElementById(joueur2.positionId)
                 }else{
+
                     joueur2Position = document.getElementById(joueur.positionId)
                 }
-        // si une case noire/joueur, empecher le joueur de se déplacer
-               if (kaseX.getAttribute('data-case-nonaccessible')){
+
+            // si une case noire/joueur, empecher le joueur de se déplacer
+
+             if (kaseX.getAttribute('data-case-nonaccessible')){
                 PasObstacle = false
-                console.log('saut impossible case x')
+                
                }else if(kaseX == joueur2Position){
+
                 PasObstacle = false
-                console.log('saut impossible case joueur x')
+         
                }
                
                if (kaseY.getAttribute('data-case-nonaccessible')){
                     PasObstacle = false
-                    console.log('saut impossible case y')     
+                       
                 }else if(kaseY === joueur2Position){
                     PasObstacle = false
-                    console.log('saut impossible case joueur y')  
+         
                 }
             }
             
@@ -156,8 +155,8 @@ class Deplacement{
         // si pas de joueur/case(s) noires, permettre au joueur de se déplacer
         if(PasObstacle){
        
-              if(joueur.deplacer == true){  
-                  
+            if(joueur.deplacer == true){  
+
                   let idJoueur2 = document.getElementById(joueur2.positionId)
                   let xPositionJoueur2 = idJoueur2.getAttribute('data-x')
                   let yPositionJoueur2 = idJoueur2.getAttribute('data-y')
@@ -165,33 +164,11 @@ class Deplacement{
                 if(
                     xPositionJoueur2 - xKaseSuivanteJoueur == 1 & yKaseSuivanteJoueur == yPositionJoueur2 || xKaseSuivanteJoueur - xPositionJoueur2 == 1 & yKaseSuivanteJoueur == yPositionJoueur2 || yPositionJoueur2 - yKaseSuivanteJoueur == 1 & xKaseSuivanteJoueur == xPositionJoueur2 || yKaseSuivanteJoueur - yPositionJoueur2 == 1 & xKaseSuivanteJoueur == xPositionJoueur2){
                     
-                    ///fight///
-
-                    //le joueur se déplace à coté de l'autre joueur
-                    this.attributKaseAjour(kaseActuelle, kaseSuivante, joueur)
-
-                    //les déplacements sont bloqués
-                    joueur.deplacer = false
-
-                    //supprimer chemin
-                    let id = null
-                    let idCase = null
-                    for(let j = 0; j < 100; j++){
-                    if(j<10){
-                        id = 'td-0'
-                    }else{
-                        id = 'td-'
-                    }
-                    idCase = id +j
-                    document.getElementById(idCase).classList.remove("cheminVador")
-                    document.getElementById(idCase).classList.remove("cheminLuke")
-                    }
-                    $('button').css('display', 'block')
-                        
-
-                    alert('fight')
-                     ///fight///
-                }else{ 
+                    //engager le combat
+                   this.bloquerDeplacement(kaseActuelle, kaseSuivante, joueur)
+                     
+                }else{
+                    //sinon continuer les déplacement
                     this.attributKaseAjour(kaseActuelle, kaseSuivante, joueur)
                     joueur.deplacer = false
                     joueur2.deplacer = true
@@ -206,6 +183,37 @@ class Deplacement{
             }
         }
     }
+
+    //bloquer les déplacement du joueur
+    bloquerDeplacement(kaseActuelle, kaseSuivante, joueur) {
+                    
+
+        //le joueur se déplace à coté de l'autre joueur
+        this.attributKaseAjour(kaseActuelle, kaseSuivante, joueur)
+
+        //les déplacements sont bloqués
+        joueur.deplacer = false
+
+        //supprimer chemin
+        let id = null
+        let idCase = null
+        for(let j = 0; j < 100; j++){
+        if(j<10){
+            id = 'td-0'
+        }else{
+            id = 'td-'
+        }
+        idCase = id +j
+        document.getElementById(idCase).classList.remove("cheminVador")
+        document.getElementById(idCase).classList.remove("cheminLuke")
+        }
+        $('button').css('display', 'block')
+            
+
+        alert('fight')
+    }
+
+
     //mettre à jour les attributs après déplacement
     attributKaseAjour(kaseActuelle, kaseSuivante, joueur){
         
@@ -213,6 +221,7 @@ class Deplacement{
         kaseSuivante.setAttribute('data-class', kaseActuelle.dataset.class)
         kaseSuivante.setAttribute('data-joueur', joueur.nom)
         kaseSuivante.className = kaseActuelle.dataset.class
+
             //si passe sur une case contenant une arme, récupérer l'arme et remplacer l'arme du joueur
             if(kaseSuivante.getAttribute('data-arme')){
         
@@ -221,6 +230,7 @@ class Deplacement{
                 let arme = new Arme()
                 let armeTab = arme.recupererArme()
 
+                //mettre à jour la bloc info des joueurs
                 if(joueur.nom == 'Luke'){
                     if(kaseSuivante.getAttribute('data-arme') != kaseActuelle.getAttribute('data-arme')){
 
@@ -268,7 +278,6 @@ class Deplacement{
             }
         joueur.positionId = kaseSuivante.id
     }
-
 
 }
 

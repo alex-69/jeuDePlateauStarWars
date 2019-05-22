@@ -20,6 +20,7 @@ class Combat{
                     $('#défendre-luke').css('visibility', 'hidden')
                     $('#attaquer-vador').css('visibility', 'visible')
                     $('#défendre-vador').css('visibility', 'visible')
+                    
                 }else if ((joueur1).nom == 'Vador'){
 
                     $('#attaquer-luke').css('visibility', 'visible')

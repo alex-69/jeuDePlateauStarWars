@@ -45,7 +45,6 @@ class Jeu {
           td.setAttribute("data-y", i)
           td.id = "td-" + i+j
           
-          //console.log(idBouton)
         td.addEventListener('click', event => { 
           if(this.joueurTab[0].deplacer == false && this.joueurTab[1].deplacer == false){
           }else{
@@ -96,6 +95,7 @@ class Jeu {
     let joueur2 = null
 
     for(let i = 0; i < this.joueurTab.length; i++){
+
         if(this.joueurTab[i].deplacer == true)
         {
             joueur2 = this.joueurTab[i]
@@ -105,20 +105,25 @@ class Jeu {
             joueur = this.joueurTab[i]
         }
     }
+
   deplacement.cheminsJoueurPossibles(joueur, joueur2)
   }
 
   creerCaseNonAccess(){
+
     let tenueDeGrille = new TenueDeGrille(null, null, null, this.longueurGrille)
     let kase = null
     for(let i = 0; i < 10; i++){
+
     kase = tenueDeGrille.parcourirTable()
     kase.style.backgroundColor = 'black'
     kase.setAttribute('data-case-nonaccessible', 0)
+
     }
   }
 
   creerArme(){
+
     let armeAleatInt = 0
     let kase = null
     let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible', null, null, this.longueurGrille)
@@ -137,7 +142,6 @@ class Jeu {
 
   creerJoueur(){
 
-
     let setJoueur = true
     let kase = null
     let tenueDeGrille = new TenueDeGrille('data-case-nonaccessible','data-arme',null,this.longueurGrille)
@@ -148,13 +152,16 @@ class Jeu {
           let arme = new Arme;
 
           if(setJoueur){
+
             kase.className = 'joueur1'
             kase.setAttribute('data-joueur', this.joueurTab[i].nom)
             kase.setAttribute('data-arme', this.joueurTab[i].arme = arme.recupererNom(5))
             $('#image-arme-luke').addClass(arme.recupererNom(5))
             kase.setAttribute('data-class','joueur1')
             setJoueur = false
+
           }else{
+            
             kase.className = 'joueur2'
             kase.setAttribute('data-joueur', this.joueurTab[i].nom)
             kase.setAttribute('data-arme', this.joueurTab[i].arme = arme.recupererNom(4))
