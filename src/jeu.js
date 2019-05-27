@@ -113,7 +113,7 @@ class Jeu {
 
     let tenueDeGrille = new TenueDeGrille(null, null, null, this.longueurGrille)
     let kase = null
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < 15; i++){
 
     kase = tenueDeGrille.parcourirTable()
     kase.style.backgroundColor = 'black'
