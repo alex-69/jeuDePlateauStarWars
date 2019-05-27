@@ -92,15 +92,16 @@ class Joueur{
     this.joueurTab[aleatInt].combattre = true;
 
     if(this.joueurTab[aleatInt].nom == 'Luke'){
+
       $('#attaquer-luke').css('visibility', 'visible')
       $('#défendre-luke').css('visibility', 'visible')
+
     }else if (this.joueurTab[aleatInt].nom == 'Vador'){
+
       $('#attaquer-vador').css('visibility', 'visible')
       $('#défendre-vador').css('visibility', 'visible')
     }
   }
-
-
 
   recupererJoueurTab(){
     return this.joueurTab
