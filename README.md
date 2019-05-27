@@ -14,10 +14,12 @@ Ce projet a été créé avec:
 
 ## les règles du jeu/ Caractéristiques
 
+* Chaque joueur commence avec une arme d’origine (sabre laser)
 * Un joueur au hasard commence à jouer
 * Les joueurs jouent chacun leur tour
 * Ils se déplacent soit horizontalement ou verticalemet de 1 à 3 cases
 * Pour déplacer un joueur, il faut cliquer sur une case en couleur
+* Si un joueur passe sur une arme contenant une arme, il la récupère et dépose son ancienne arme
 * Si les joueurs sont côte à côte, un combat à mort s'engage
 * Chaque joueur attaque ou se défend chacun son tour (si le joueur se défend, les dégats de l'adversaire sont divisés par 2)
 * le premier joueur qui à 0 de vie perd la partie
