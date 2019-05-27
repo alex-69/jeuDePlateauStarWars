@@ -14,7 +14,7 @@ Ce projet a été créé avec:
 
 ## les règles du jeu/ Caractéristiques
 
-* Un joueur est selectionné au hasard commence à jouer
+* Un joueur au hasard commence à jouer
 * Les joueurs jouent chacun leur tour
 * Ils se déplacent soit horizontalement ou verticalemet de 1 à 3 cases
 * Pour déplacer un joueur, il faut cliquer sur une case en couleur
